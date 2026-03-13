@@ -46,9 +46,11 @@ export default function PolitiqueConfidentialitePage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
 
           <Section title="Responsable du traitement">
-            <div className="p-4 bg-amber-50 border border-amber-100 rounded-xl text-amber-800">
-              <p>Nom ou raison sociale : <span className="font-mono">[À COMPLÉTER]</span></p>
-              <p>Contact : <a href="mailto:contact@aidesconnect.fr" className="underline">contact@aidesconnect.fr</a></p>
+            <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl space-y-1">
+              <p><strong>Stéphane APANON</strong></p>
+              <p>Entrepreneur Individuel — SIRET : 750 420 200 00024</p>
+              <p>1093 Chemin des Moulins — 32600 Pujaudran</p>
+              <p>Contact : <a href="mailto:contact@aides-connect.fr" className="text-blue-600 hover:underline">contact@aides-connect.fr</a></p>
             </div>
           </Section>
 
@@ -156,8 +158,8 @@ export default function PolitiqueConfidentialitePage() {
             </ul>
             <p>
               Pour exercer ces droits, contactez-nous à :{" "}
-              <a href="mailto:contact@aidesconnect.fr" className="text-blue-600 hover:underline">
-                contact@aidesconnect.fr
+              <a href="mailto:contact@aides-connect.fr" className="text-blue-600 hover:underline">
+                contact@aides-connect.fr
               </a>
             </p>
             <p>

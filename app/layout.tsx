@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Aides Connect" }],
   creator: "Aides Connect",
-  metadataBase: new URL("https://aides-connect.vercel.app"),
+  metadataBase: new URL("https://aides-connect.fr"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://aides-connect.vercel.app",
+    url: "https://aides-connect.fr",
     siteName: "Aides Connect",
     title: "Aides Connect — Orientation vers les aides et démarches administratives",
     description:

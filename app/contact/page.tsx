@@ -47,10 +47,10 @@ export default function ContactPage() {
                 Pour toute question générale sur le service.
               </p>
               <a
-                href="mailto:contact@aidesconnect.fr"
+                href="mailto:contact@aides-connect.fr"
                 className="text-blue-600 hover:underline text-sm font-medium"
               >
-                contact@aidesconnect.fr
+                contact@aides-connect.fr
               </a>
             </div>
 
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 institutionnel et souhaitez explorer une collaboration ?
               </p>
               <a
-                href="mailto:contact@aidesconnect.fr?subject=Partenariat"
+                href="mailto:contact@aides-connect.fr?subject=Partenariat"
                 className="text-indigo-600 hover:underline text-sm font-medium"
               >
                 Nous écrire →

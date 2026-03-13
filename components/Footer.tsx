@@ -68,8 +68,8 @@ export default function Footer() {
             <div className="mt-5 pt-4 border-t border-slate-800">
               <p className="text-xs text-slate-500">
                 Partenariats &amp; collectivités :{" "}
-                <a href="mailto:contact@aidesconnect.fr" className="text-slate-400 hover:text-white transition-colors">
-                  contact@aidesconnect.fr
+                <a href="mailto:contact@aides-connect.fr" className="text-slate-400 hover:text-white transition-colors">
+                  contact@aides-connect.fr
                 </a>
               </p>
             </div>
