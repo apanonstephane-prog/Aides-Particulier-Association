@@ -32,21 +32,12 @@ export const metadata: Metadata = {
     title: "Aides Connect — Orientation vers les aides et démarches administratives",
     description:
       "Trouvez les aides, subventions et démarches pertinentes selon votre situation. Gratuit pour les particuliers et les associations.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Aides Connect — Moins de temps perdu à chercher. Plus de clarté pour agir.",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Aides Connect — Orientation vers les aides et démarches administratives",
     description:
       "Trouvez les aides, subventions et démarches pertinentes selon votre situation. Gratuit pour les particuliers et les associations.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
