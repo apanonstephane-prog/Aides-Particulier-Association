@@ -35,6 +35,9 @@ export default function Navbar() {
             <Link href="/#comment-ca-marche" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
               Comment ça marche
             </Link>
+            <Link href="/assistant" className={`text-sm font-medium transition-colors ${isActive("/assistant")}`}>
+              🤖 Assistant
+            </Link>
             <Link href="/#contact" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
               Contact
             </Link>
@@ -42,6 +45,12 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/assistant"
+              className="px-4 py-2 bg-amber-500 text-white text-sm font-semibold rounded-xl hover:bg-amber-600 transition-colors shadow-md hover:shadow-lg"
+            >
+              🤖 Assistant
+            </Link>
             <Link
               href="/particuliers"
               className="px-5 py-2 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
@@ -78,7 +87,13 @@ export default function Navbar() {
             <Link href="/#comment-ca-marche" className="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors" onClick={() => setMenuOpen(false)}>
               Comment ça marche
             </Link>
-            <div className="pt-2">
+            <Link href="/assistant" className="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-amber-50 hover:text-amber-600 rounded-lg transition-colors" onClick={() => setMenuOpen(false)}>
+              🤖 Assistant administratif
+            </Link>
+            <div className="pt-2 space-y-2">
+              <Link href="/assistant" className="block px-4 py-2 bg-amber-500 text-white text-sm font-semibold rounded-xl text-center" onClick={() => setMenuOpen(false)}>
+                🤖 Assistant
+              </Link>
               <Link href="/particuliers" className="block px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-xl text-center" onClick={() => setMenuOpen(false)}>
                 Trouver mes aides
               </Link>

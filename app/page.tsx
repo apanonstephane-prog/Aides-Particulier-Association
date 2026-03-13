@@ -385,6 +385,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Assistant Section */}
+      <section className="py-16 bg-gradient-to-br from-slate-800 to-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 text-sm font-medium px-4 py-2 rounded-full border border-amber-400/30 mb-6">
+                <span>✨</span> Nouveau — Assistant gratuit
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Des difficultés à remplir vos dossiers ?
+              </h2>
+              <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+                Notre assistant vous aide à préparer vos formulaires administratifs,
+                numériser vos documents et consulter vos PDF — sans rien envoyer sur internet.
+              </p>
+              <Link
+                href="/assistant"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-amber-500 text-white font-bold text-lg rounded-2xl hover:bg-amber-600 hover:scale-105 transition-all shadow-xl"
+              >
+                <span className="text-2xl">🤖</span>
+                Ouvrir l&apos;assistant
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+            <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+              {[
+                { icon: "📝", title: "Remplissage assisté", desc: "Créez votre profil et copiez vos informations en un clic" },
+                { icon: "📷", title: "Scanner de documents", desc: "Photographiez vos pièces justificatives directement depuis l'appli" },
+                { icon: "📄", title: "Visualiseur PDF", desc: "Consultez et imprimez vos formulaires officiel PDF" },
+              ].map((item, i) => (
+                <div key={i} className="p-5 bg-white/10 rounded-2xl border border-white/10 hover:bg-white/15 transition-colors">
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <h3 className="font-bold text-white text-sm mb-1">{item.title}</h3>
+                  <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 hero-gradient">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
