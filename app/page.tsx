@@ -95,24 +95,19 @@ export default function HomePage() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/75 max-w-xl mt-6 mb-9 leading-relaxed animate-fade-in-up delay-200">
-            Racontez votre situation à Clara. Elle repère les aides auxquelles vous avez probablement droit,
-            vérifie les montants sur les sites officiels et prépare votre dossier, pièce par pièce.
+            Répondez à quelques questions : Clara repère les aides auxquelles vous avez probablement droit,
+            vous oriente vers les formulaires officiels et prépare votre dossier, pièce par pièce.
           </p>
 
-          <form action="/conseil" method="get" className="w-full max-w-2xl animate-fade-in-up delay-300">
-            <div className="flex flex-col sm:flex-row gap-2 p-2 rounded-2xl bg-white shadow-2xl shadow-black/30">
-              <input
-                name="q"
-                required
-                placeholder="Ex. : mère seule, 2 enfants, locataire, 1 400 € par mois…"
-                className="flex-1 bg-transparent outline-none text-[#0B1B3A] placeholder:text-slate-400 text-base px-4 py-3"
-                aria-label="Décrivez votre situation"
-              />
-              <button type="submit" className="shrink-0 font-bold px-6 py-3.5 rounded-xl bg-[#E8962E] text-[#0B1B3A] hover:bg-[#F2B55F] transition">
-                Trouver mes aides →
-              </button>
-            </div>
-          </form>
+          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-2xl animate-fade-in-up delay-300">
+            <Link href="/conseil?type=particulier" className="flex-1 text-center font-bold px-6 py-4 rounded-2xl bg-[#E8962E] text-[#0B1B3A] hover:bg-[#F2B55F] transition shadow-2xl shadow-black/30">
+              Trouver mes aides →
+            </Link>
+            <Link href="/conseil?type=association" className="flex-1 text-center font-bold px-6 py-4 rounded-2xl bg-white/10 border border-white/25 backdrop-blur-md hover:bg-white/20 transition">
+              Pour une association
+            </Link>
+          </div>
+          <Link href="/conseil?demo=famille" className="self-start mt-4 text-sm font-semibold text-[#F2B55F] hover:underline animate-fade-in-up delay-400">▶ Voir Clara en action</Link>
 
           <div className="flex flex-wrap gap-2 mt-4 animate-fade-in-up delay-400">
             <Link href="/particuliers" className="text-sm text-white/80 px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition">Parcours particulier</Link>
@@ -121,7 +116,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-wrap gap-x-7 gap-y-2 mt-12 text-sm text-white/60 animate-fade-in-up delay-500">
-            {['Gratuit, sans inscription', 'Sources officielles uniquement', 'Particuliers & associations'].map((t) => (
+            {['Gratuit, sans inscription', 'Calculé sur votre appareil', 'Particuliers & associations'].map((t) => (
               <span key={t} className="flex items-center gap-2"><span className="text-[#F2B55F]">✓</span>{t}</span>
             ))}
           </div>
@@ -146,13 +141,13 @@ export default function HomePage() {
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E8962E] mb-3">Agent IA · vérification en direct</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E8962E] mb-3">Conseillère · diagnostic en 1 minute</p>
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#0B1B3A] leading-[1.05] mb-6">De « je ne sais pas à quoi j&apos;ai droit » à un dossier prêt.</h2>
             <div className="space-y-4">
               {[
-                ['1', 'Elle écoute', 'Vous décrivez votre situation avec vos mots. Clara ne pose que les questions qui changent le résultat.'],
+                ['1', 'Elle écoute', 'Quelques questions courtes, uniquement celles qui changent le résultat.'],
                 ['2', 'Elle analyse', 'Pré-diagnostic sur 13 dispositifs nationaux : RSA, prime d’activité, logement, CSS, famille, AAH, bourse…'],
-                ['3', 'Elle vérifie', 'Montants et plafonds de l’année contrôlés sur service-public.fr, caf.fr, ameli.fr — sources affichées.'],
+                ['3', 'Elle oriente', 'Chaque aide renvoie à sa fiche service-public.fr, caf.fr ou ameli.fr et au simulateur officiel pour le montant exact.'],
                 ['4', 'Elle prépare', 'Formulaire officiel, simulateur, et liste interactive des pièces à rassembler.'],
               ].map(([n, t, d]) => (
                 <div key={n} className="flex gap-4">
@@ -161,8 +156,8 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <Link href="/conseil" className="inline-flex items-center gap-2 mt-9 px-7 py-4 rounded-2xl bg-[#0B1B3A] text-white font-bold hover:bg-[#1F3B73] transition shadow-xl shadow-[#0B1B3A]/20">
-              Parler à Clara <span className="text-[#F2B55F]">→</span>
+            <Link href="/conseil?type=particulier" className="inline-flex items-center gap-2 mt-9 px-7 py-4 rounded-2xl bg-[#0B1B3A] text-white font-bold hover:bg-[#1F3B73] transition shadow-xl shadow-[#0B1B3A]/20">
+              Faire mon diagnostic <span className="text-[#F2B55F]">→</span>
             </Link>
           </div>
         </div>
@@ -174,17 +169,17 @@ export default function HomePage() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1B3A] max-w-2xl mb-10">Une porte d&apos;entrée pour chaque situation.</h2>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { img: VISUALS.etudiant, t: 'Étudiants & jeunes actifs', d: 'Bourse, logement, prime d’activité, santé.', q: "Je suis étudiant, locataire, avec un petit job. À quoi ai-je droit ?" },
-              { img: VISUALS.senior, t: 'Seniors & aidants', d: 'APA, ASPA, aides à domicile, autonomie.', q: "Ma mère a 80 ans, vit seule et perd en autonomie. Quelles aides ?" },
-              { img: VISUALS.association, t: 'Associations', d: 'FDVA, subventions, mécénat, service civique.', q: "Notre association sans salarié cherche des financements pour un projet." },
+              { img: VISUALS.etudiant, t: 'Étudiants & jeunes actifs', d: 'Bourse, logement, prime d’activité, santé.', id: 'etudiant' },
+              { img: VISUALS.senior, t: 'Seniors & aidants', d: 'APA, ASPA, aides à domicile, autonomie.', id: 'senior' },
+              { img: VISUALS.association, t: 'Associations', d: 'FDVA, subventions, mécénat, service civique.', id: 'association' },
             ].map((c) => (
-              <Link key={c.t} href={`/conseil?q=${encodeURIComponent(c.q)}`} className="group relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-[3/4]">
+              <Link key={c.t} href={`/conseil?profil=${c.id}`} className="group relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-[3/4]">
                 <Image src={c.img} alt={c.t} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3A] via-[#0B1B3A]/30 to-transparent" />
                 <div className="absolute bottom-0 p-6 text-white">
                   <p className="text-xl font-bold">{c.t}</p>
                   <p className="text-white/75 text-sm mt-1">{c.d}</p>
-                  <p className="text-[#F2B55F] text-sm font-semibold mt-3 group-hover:translate-x-1 transition">Demander à Clara →</p>
+                  <p className="text-[#F2B55F] text-sm font-semibold mt-3 group-hover:translate-x-1 transition">Voir un exemple de diagnostic →</p>
                 </div>
               </Link>
             ))}

@@ -2,11 +2,16 @@
 import { NextRequest } from 'next/server'
 import { streamAgent, type ChatTurn } from '@/lib/agent/runtime'
 import { CLARA_TOOLS, CLARA_SERVER_TOOLS, claraSystemPrompt } from '@/lib/agent/aides'
+import { AGENT_LIVE } from '@/lib/agent/flags'
 
 export const runtime = 'nodejs'
 export const maxDuration = 60
 
 export async function POST(req: NextRequest) {
+  // Coupe-circuit : aucun appel de modèle (donc aucun coût) tant que Clara n'est pas activée
+  if (!AGENT_LIVE) {
+    return Response.json({ error: 'Conseillère en direct désactivée : utilisez le diagnostic guidé.' }, { status: 503 })
+  }
   let messages: ChatTurn[] = []
   try {
     const body = await req.json()

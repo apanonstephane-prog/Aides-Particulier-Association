@@ -46,7 +46,7 @@ const ASSO_DISPOSITIFS = [
   { id: 'pec', nom: 'Contrat aidé (PEC) / emploi associatif', organisme: 'France Travail', categorie: 'Emploi', info: 'https://travail-emploi.gouv.fr/parcours-emploi-competences', condition: (p: Asso) => p.recrutement === true, raison: "Aide à l'embauche selon le public recruté et les enveloppes locales." },
 ]
 
-interface Profil {
+export interface Profil {
   age?: number
   situation_familiale?: 'seul' | 'couple'
   enfants?: number
@@ -58,7 +58,7 @@ interface Profil {
   perte_autonomie?: boolean
   inscrit_france_travail?: boolean
 }
-interface Asso { salaries?: number; interet_general?: boolean; recrutement?: boolean; budget_annuel?: number }
+export interface Asso { salaries?: number; interet_general?: boolean; recrutement?: boolean; budget_annuel?: number }
 
 // Seuils volontairement prudents : ce sont des signaux d'orientation,
 // jamais une décision. Échelle d'unités proche de celle utilisée par la CSS
