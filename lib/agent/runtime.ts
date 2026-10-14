@@ -10,8 +10,21 @@
 // ════════════════════════════════════════════════════════════════════════════
 
 import Anthropic from '@anthropic-ai/sdk'
+import { getVercelOidcToken } from '@vercel/oidc'
 
-export const AGENT_MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5'
+// Authentification sans clé à gérer :
+//   1. ANTHROPIC_API_KEY présente → API Anthropic en direct
+//   2. sinon → Vercel AI Gateway, authentifié par le jeton OIDC que Vercel
+//      fournit automatiquement à chaque déploiement (aucune variable à créer)
+const USE_GATEWAY = !process.env.ANTHROPIC_API_KEY
+export const AGENT_MODEL =
+  process.env.ANTHROPIC_MODEL || (USE_GATEWAY ? 'anthropic/claude-sonnet-5' : 'claude-sonnet-5-5')
+
+async function createClient() {
+  if (!USE_GATEWAY) return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+  const token = process.env.AI_GATEWAY_API_KEY || (await getVercelOidcToken())
+  return new Anthropic({ apiKey: token, baseURL: 'https://ai-gateway.vercel.sh' })
+}
 const MAX_STEPS = 8
 
 /** Événements envoyés au client */
@@ -84,7 +97,7 @@ async function runLoop(
   history: ChatTurn[],
   emit: (e: AgentEvent) => void,
 ) {
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+  const client = await createClient()
   const toolsByName = new Map(config.tools.map((t) => [t.definition.name, t]))
 
   const messages: Anthropic.MessageParam[] = history

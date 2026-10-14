@@ -7,9 +7,6 @@ export const runtime = 'nodejs'
 export const maxDuration = 60
 
 export async function POST(req: NextRequest) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return Response.json({ error: "Clara n'est pas encore configurée (clé ANTHROPIC_API_KEY manquante)." }, { status: 500 })
-  }
   let messages: ChatTurn[] = []
   try {
     const body = await req.json()

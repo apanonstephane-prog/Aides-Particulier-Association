@@ -17,7 +17,7 @@ Boucle agentique Claude streamée en SSE (`lib/agent/runtime.ts`), outils dans `
 Règle centrale : aucun montant cité de mémoire — chaque chiffre vient d'une source officielle consultée, sinon renvoi au simulateur.
 
 - Page : `/conseil` (`/conseil?q=...` lance directement une demande).
-- Variables : `ANTHROPIC_API_KEY` (obligatoire), `ANTHROPIC_MODEL` (défaut `claude-sonnet-5-5`).
+- Aucune clé requise sur Vercel : sans `ANTHROPIC_API_KEY`, les appels passent par Vercel AI Gateway (authentification OIDC automatique, facturé en crédits AI Gateway). `ANTHROPIC_API_KEY` reste possible pour appeler Anthropic en direct. `ANTHROPIC_MODEL` surcharge le modèle (défaut gateway : `anthropic/claude-sonnet-5`).
 - Visuels de marque générés avec Higgsfield : `lib/visuals.ts`.
 
 ## Développement
