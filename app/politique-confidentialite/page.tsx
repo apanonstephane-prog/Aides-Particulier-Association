@@ -69,6 +69,13 @@ export default function PolitiqueConfidentialitePage() {
               transmises à nos serveurs ni à des tiers.
             </p>
             <p>
+              <strong>Conseillère IA « Clara » :</strong> les messages que vous écrivez à Clara sont
+              transmis à notre serveur puis au fournisseur du modèle d&apos;IA (Anthropic, Claude) pour
+              produire la réponse. Aides Connect ne les enregistre pas et ne crée aucun profil. Les
+              recherches de vérification sont limitées aux sites publics officiels. N&apos;y indiquez
+              jamais de numéro de sécurité sociale, de coordonnées bancaires ni de mot de passe.
+            </p>
+            <p>
               <strong>Formulaire de contact :</strong> si vous nous contactez via le formulaire ou
               par email, les données fournies (nom, email, message) sont utilisées uniquement pour
               répondre à votre demande.

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
+  { href: "/conseil", label: "Clara ✦" },
   { href: "/particuliers", label: "Particuliers" },
   { href: "/associations", label: "Associations" },
   { href: "/assistant", label: "Assistant" },
@@ -17,21 +18,21 @@ export default function Navbar() {
 
   const isActive = (path: string) =>
     pathname === path || pathname.startsWith(path + "/")
-      ? "text-blue-600 font-semibold"
+      ? "text-[#0B1B3A] font-semibold"
       : "text-slate-600 hover:text-slate-900";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FBF7F0]/85 backdrop-blur-xl border-b border-[#0B1B3A]/8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0B1B3A] to-[#1F3B73] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
               <span className="text-white text-sm font-bold">A</span>
             </div>
             <span className="font-bold text-slate-800 text-base tracking-tight">
-              Aides<span className="text-blue-600">Connect</span>
+              Aides<span className="text-[#E8962E]">Connect</span>
             </span>
           </Link>
 
@@ -51,10 +52,10 @@ export default function Navbar() {
           {/* CTA desktop */}
           <div className="hidden md:flex items-center">
             <Link
-              href="/particuliers"
-              className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+              href="/conseil"
+              className="px-4 py-2 bg-[#0B1B3A] text-white text-sm font-semibold rounded-xl hover:bg-[#1F3B73] transition-colors shadow-sm"
             >
-              Trouver mes aides
+              Parler à Clara
             </Link>
           </div>
 
@@ -90,11 +91,11 @@ export default function Navbar() {
             ))}
             <div className="pt-3 px-1">
               <Link
-                href="/particuliers"
-                className="block px-4 py-3 bg-blue-600 text-white text-sm font-semibold rounded-xl text-center hover:bg-blue-700 transition-colors"
+                href="/conseil"
+                className="block px-4 py-3 bg-[#0B1B3A] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#1F3B73] transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                Trouver mes aides
+                Parler à Clara
               </Link>
             </div>
           </div>
