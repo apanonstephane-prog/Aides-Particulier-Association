@@ -1,4 +1,6 @@
 "use client";
+
+import { ObHeroMedia } from '@/components/ObsidianPageHero'
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -48,7 +50,7 @@ export default function AssistantPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-24 pb-12 overflow-hidden">
+      <section className="relative pt-24 pb-12 overflow-hidden ob-page-hero"><ObHeroMedia slug="assistant" />
         <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-900" />
         <div className="absolute inset-0 opacity-5"
           style={{ backgroundImage: "radial-gradient(circle at 30% 50%, white 0%, transparent 60%)" }}

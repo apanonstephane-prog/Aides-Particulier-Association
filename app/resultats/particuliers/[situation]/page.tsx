@@ -1,3 +1,4 @@
+import { ObHeroMedia } from '@/components/ObsidianPageHero'
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -770,7 +771,7 @@ export default async function ResultatsParticuliersPage({ params }: PageProps) {
       <Navbar />
 
       {/* Hero */}
-      <section className={`relative pt-24 pb-14 overflow-hidden bg-gradient-to-br ${data.color}`}>
+      <section className="relative pt-24 pb-14 overflow-hidden ob-page-hero"><ObHeroMedia slug="resultats-particuliers" />
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "radial-gradient(circle at 30% 50%, white 0%, transparent 60%)" }}
         />

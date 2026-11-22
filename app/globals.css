@@ -227,3 +227,77 @@ body {
 
 /* Clara : accents améthyste / or doux. */
 :root{--background:#fbf7ef;--foreground:#30243c}.ob-feature-band{background:#241b30}.ob-hero--clara .ob-hero-portrait{background:linear-gradient(140deg,#cda86a60,#5a447355)}
+
+/* One cinematic cover per internal page. Images are original editorial illustrations. */
+.ob-page-hero{position:relative!important;isolation:isolate;overflow:hidden;min-height:clamp(385px,34vw,540px);display:grid;align-items:center;background:#17131f!important;color:#fff8eb;border-bottom:1px solid #bda16a70;padding-bottom:76px!important}
+.ob-page-hero--compact{min-height:clamp(300px,27vw,390px);padding-top:52px!important;padding-bottom:68px!important}
+.ob-page-hero>div:not(.absolute){position:relative;z-index:2;width:100%}
+.ob-page-hero>div.absolute{display:none!important}
+.ob-page-hero h1{color:#fffaf2!important;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.043em;line-height:1.03;max-width:780px;text-wrap:balance}
+.ob-page-hero--compact h1{font-size:clamp(34px,3.8vw,54px)}
+.ob-page-hero p,.ob-page-hero nav{color:#f0e6d8!important;text-shadow:0 1px 10px #110f18a0}
+.ob-page-hero .ob-overline,.ob-page-hero .ob-tool-back{color:#f1d08c!important}
+.ob-page-hero [class*="text-slate-600"],.ob-page-hero [class*="text-slate-900"],.ob-page-hero [class*="text-gray-800"],.ob-page-hero [class*="text-gray-500"]{color:#f0e6d8!important}
+.ob-page-hero h1 span,.ob-page-hero span[class*="text-"][class*="-200"]{color:#f0d398!important}
+.ob-page-hero>div>span[class*="uppercase"]{background:#1d1727b3!important;color:#f0d398!important;border-color:#d9b77877!important}
+.ob-hero-media{position:absolute;inset:0;margin:0;overflow:hidden;pointer-events:none;z-index:0;background:#201629}
+.ob-hero-media-image{object-fit:cover;object-position:65% 50%;animation:ob-cover-drift 19s ease-in-out alternate infinite;transform-origin:70% center}
+.ob-hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#15121fea 0%,#1b1525dc 24%,#1a1425a9 43%,#211a2e32 65%,#20162908 100%),linear-gradient(0deg,#15121fc7,transparent 34%);z-index:1}
+.ob-hero-caption{position:absolute;bottom:17px;right:clamp(16px,4vw,60px);z-index:3;display:flex;align-items:center;gap:10px;color:#fff6e3;max-width:calc(100% - 28px);background:#1a1423cc;border:1px solid #d3b27577;border-radius:12px;padding:9px 13px;text-shadow:none;line-height:1.2;backdrop-filter:blur(10px)}
+.ob-hero-caption strong{display:block;font-size:13px;font-weight:650;letter-spacing:.015em}
+.ob-hero-caption small{display:block;font-size:9px;color:#ead8b8;letter-spacing:.07em;text-transform:uppercase;margin-top:3px}
+.ob-hero-caption-icon{font-size:22px;line-height:1;color:#e3be78}
+.ob-page-hero--card{border:1px solid #c5a46877;border-radius:18px;min-height:240px;margin-bottom:26px;padding:28px 28px 62px!important}
+.ob-page-hero--card .ob-card-copy h1{font-size:clamp(30px,3vw,45px);margin-bottom:10px}
+.ob-page-hero--card .ob-card-copy p{max-width:620px;margin-bottom:0}
+.ob-page-band{position:relative;isolation:isolate;overflow:hidden;background:#201629;border-radius:15px;border:1px solid #caab7160;min-height:155px;margin:0 0 20px;color:#fff8ee}
+.ob-page-band--title{min-height:220px;display:flex;align-items:center}
+.ob-page-band:not(.ob-page-band--title) .ob-hero-media:after{background:linear-gradient(0deg,#15121fc8,transparent 70%),linear-gradient(90deg,#15121f32,transparent)}
+.ob-page-band .ob-hero-caption{right:14px;bottom:12px;padding:7px 10px}
+.ob-page-band .ob-hero-caption strong{font-size:11px}
+.ob-band-copy{position:relative;z-index:2;padding:26px 28px 50px}
+.ob-band-copy p{font-size:10px;font-weight:700;color:#f0d398;letter-spacing:.17em;margin-bottom:10px}
+.ob-band-copy h1{font-size:clamp(27px,3.2vw,48px);font-weight:750;line-height:1.06;margin:0;letter-spacing:-.04em;text-shadow:0 2px 12px #110f17}
+.ob-map-viewport{height:max(380px,calc(100dvh - 64px - 170px));}
+main>.ob-page-band:has(+.ob-map-viewport){margin:0;height:170px;min-height:170px;border-radius:0;border-inline:0}
+.ob-studio-band{flex-shrink:0;padding:9px 14px 0;position:relative;z-index:10}
+.ob-studio-band .ob-page-band{height:clamp(78px,12vh,125px);min-height:0;margin:0;border-radius:11px}
+.ob-studio-band .ob-hero-media-image{object-position:60% 54%}
+.ob-studio-band .ob-hero-caption{font-size:10px;bottom:8px;padding:5px 9px}
+.ob-studio-band .ob-hero-caption small{font-size:8px}
+.ob-clara-studio-band{max-width:1280px;margin:auto;padding:15px 24px 0}
+.ob-clara-studio-band .ob-page-band{height:clamp(128px,18vw,205px);margin:0}
+.ob-tool-page .ob-tool-intro.ob-page-hero{margin-bottom:30px}
+.ob-tool-intro.ob-page-hero>.ob-wrap{padding-inline:clamp(22px,5vw,72px)}
+@keyframes ob-cover-drift{from{transform:scale(1.005)}to{transform:scale(1.055) translateX(-.35%)}}
+@media(max-width:700px){
+ .ob-page-hero:not(.ob-page-hero--card){min-height:0;padding-top:clamp(190px,52vw,280px)!important;padding-bottom:35px!important;align-items:start;}
+ .ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media{height:clamp(240px,64vw,340px);bottom:auto;}
+ .ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media .ob-hero-media-image{object-position:center 46%}
+ .ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media:after{background:linear-gradient(0deg,#17131f 0%,#17131fbb 16%,transparent 55%),linear-gradient(90deg,#17131f22,transparent)}
+ .ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media .ob-hero-caption{top:12px;bottom:auto;right:12px;padding:7px 9px}
+ .ob-hero-caption strong{font-size:11px}.ob-hero-caption small{font-size:8px}
+ .ob-page-hero h1{font-size:clamp(34px,9.4vw,48px);line-height:1.06}
+ .ob-page-hero--card{padding:22px 18px 74px!important;min-height:240px}
+ .ob-page-band--title{min-height:185px}.ob-band-copy{padding:18px 20px 58px}
+ .ob-studio-band{padding:6px 9px 0}.ob-studio-band .ob-page-band{height:76px}
+ .ob-clara-studio-band{padding:10px 14px 0}.ob-clara-studio-band .ob-page-band{height:140px;min-height:0}
+ .ob-page-hero--compact .ob-wrap{margin-top:0}
+}
+@media(max-height:680px){.ob-studio-band .ob-page-band{height:64px}.ob-studio-band .ob-hero-caption small{display:none}}
+@media(prefers-reduced-motion:reduce){.ob-hero-media-image{animation:none!important;transform:none!important}}
+
+/* Panoramic art occupies the right, retaining recognizable monuments rather than cropping away their silhouettes. */
+@media(min-width:701px){
+ .ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media>.ob-hero-media-image{width:76%!important;left:auto!important;right:0!important;object-position:60% 50%}
+ .ob-page-hero--compact:not(.ob-page-hero--card)>.ob-hero-media>.ob-hero-media-image{width:66%!important;object-position:62% 50%}
+ .ob-page-hero>.ob-hero-media:after{background:linear-gradient(90deg,#17131f 0%,#17131ff5 23%,#17131fdd 35%,#17131f85 55%,#17131f06 79%),linear-gradient(0deg,#15121f9a,transparent 32%)}
+ .ob-studio-band .ob-hero-media-image,.ob-clara-studio-band .ob-hero-media-image{width:65%!important;left:auto!important;right:0!important;object-position:70% 48%}
+ .ob-studio-band .ob-hero-media:after,.ob-clara-studio-band .ob-hero-media:after{background:linear-gradient(90deg,#201629 0%,#201629fa 28%,#20162970 52%,transparent 76%),linear-gradient(0deg,#15121f60,transparent 55%)}
+ .ob-studio-band .ob-hero-caption,.ob-clara-studio-band .ob-hero-caption{left:18px;right:auto;top:50%;bottom:auto;transform:translateY(-50%);padding:11px 15px}
+ main>.ob-page-band:has(+.ob-map-viewport) .ob-hero-media-image{width:70%!important;left:auto!important;right:0!important;object-position:70% 48%}
+}
+@media(max-width:700px){.ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media .ob-hero-caption{left:12px;right:auto}}
+
+.ob-page-hero h1>span{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-style:italic;letter-spacing:-.04em}
+.ob-page-hero p[style*="#D9B778"]{color:#f0d398!important;font-family:Georgia,'Times New Roman',serif;font-style:italic}

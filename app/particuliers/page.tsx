@@ -1,4 +1,6 @@
 "use client";
+
+import { ObHeroMedia } from '@/components/ObsidianPageHero'
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -135,21 +137,21 @@ export default function ParticuliersPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-24 pb-14 overflow-hidden">
+      <section className="relative pt-24 pb-14 overflow-hidden ob-page-hero"><ObHeroMedia slug="particuliers" />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700" />
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "radial-gradient(circle at 30% 50%, white 0%, transparent 60%)" }}
         />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="inline-flex items-center gap-2 bg-white/15 text-white/90 text-sm px-4 py-1.5 rounded-full border border-white/20 mb-5">
             <Link href="/" className="hover:underline">Accueil</Link>
             <span className="opacity-50">/</span>
             <span>Particuliers</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Aides pour les <span className="text-blue-200">particuliers</span>
+            Aides pour les <span className="text-[#f5d89e]">particuliers</span>
           </h1>
-          <p className="text-blue-100 text-lg max-w-2xl mx-auto">
+          <p className="text-white/85 text-lg max-w-2xl">
             Sélectionnez votre situation familiale pour découvrir les aides auxquelles vous avez droit
           </p>
         </div>

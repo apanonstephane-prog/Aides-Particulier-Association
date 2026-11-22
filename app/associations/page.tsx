@@ -1,4 +1,6 @@
 "use client";
+
+import { ObHeroMedia } from '@/components/ObsidianPageHero'
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -147,21 +149,21 @@ export default function AssociationsPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-24 pb-14 overflow-hidden">
+      <section className="relative pt-24 pb-14 overflow-hidden ob-page-hero"><ObHeroMedia slug="associations" />
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700" />
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "radial-gradient(circle at 70% 50%, white 0%, transparent 60%)" }}
         />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="inline-flex items-center gap-2 bg-white/15 text-white/90 text-sm px-4 py-1.5 rounded-full border border-white/20 mb-5">
             <Link href="/" className="hover:underline">Accueil</Link>
             <span className="opacity-50">/</span>
             <span>Associations</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Subventions &amp; aides pour les <span className="text-purple-200">associations</span>
+            Subventions &amp; aides pour les <span className="text-[#f5d89e]">associations</span>
           </h1>
-          <p className="text-indigo-100 text-lg max-w-2xl mx-auto">
+          <p className="text-white/85 text-lg max-w-2xl">
             Sélectionnez le statut de votre association pour trouver les financements adaptés à votre projet
           </p>
         </div>

@@ -1,5 +1,7 @@
 'use client'
 
+import { ObHeroBand } from '@/components/ObsidianPageHero'
+
 // Clara — diagnostic guidé (gratuit), démonstrations rejouées,
 // et conversation en direct si l'agent est activé.
 
@@ -58,7 +60,7 @@ export default function ClaraStudio() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#FBF7EF] pt-16">
+    <div className="min-h-screen bg-[#FBF7EF] pt-16"><div className="ob-clara-studio-band"><ObHeroBand slug="conseil" /></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10 grid lg:grid-cols-[1fr_340px] gap-8">
         <section className="cshell">
           <header className="flex flex-wrap items-center gap-3 px-5 sm:px-6 py-4 border-b border-[#30243C]/8">

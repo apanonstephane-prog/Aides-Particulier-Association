@@ -1,3 +1,4 @@
+import { ObHeroMedia } from '@/components/ObsidianPageHero'
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -24,9 +25,9 @@ export default function PolitiqueConfidentialitePage() {
     <div className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <main className="pt-24 pb-20">
+      <main className="pt-16 pb-20">
         {/* En-tête */}
-        <div className="bg-white border-b border-slate-100">
+        <div className="ob-page-hero ob-page-hero--compact"><ObHeroMedia slug="politique-confidentialite" />
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <nav className="text-xs text-slate-400 mb-4" aria-label="Fil d'Ariane">
               <Link href="/" className="hover:text-slate-600 transition-colors">Accueil</Link>
