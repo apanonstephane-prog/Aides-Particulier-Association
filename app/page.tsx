@@ -127,8 +127,8 @@ export default function HomePage() {
       <section className="bg-[#FBF7F0] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_1.1fr] gap-14 items-center">
           <div className="relative">
-            <div className="relative aspect-square max-w-lg rounded-[2rem] overflow-hidden shadow-2xl shadow-[#0B1B3A]/25">
-              <Image src={VISUALS.clara} alt="Des formulaires qui deviennent un chemin lumineux" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <div className="relative aspect-[4/5] max-w-lg rounded-[2rem] overflow-hidden shadow-2xl shadow-[#0B1B3A]/25">
+              <Image src={VISUALS.clara} alt="Clara, déesse protectrice, tend une lumière pour guider vers les aides" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
             </div>
             <div className="absolute -bottom-6 right-0 sm:-right-6 w-72 bg-white rounded-2xl p-4 shadow-2xl shadow-[#0B1B3A]/20 ring-1 ring-[#0B1B3A]/5 floaty">
               <p className="text-[10px] uppercase tracking-[0.16em] font-semibold text-[#E8962E]">Pré-diagnostic</p>
@@ -159,6 +159,7 @@ export default function HomePage() {
             <Link href="/conseil?type=particulier" className="inline-flex items-center gap-2 mt-9 px-7 py-4 rounded-2xl bg-[#0B1B3A] text-white font-bold hover:bg-[#1F3B73] transition shadow-xl shadow-[#0B1B3A]/20">
               Faire mon diagnostic <span className="text-[#F2B55F]">→</span>
             </Link>
+            <Link href="/conseil?mode=live" className="inline-flex items-center gap-2 mt-3 ml-0 sm:ml-4 px-5 py-3 rounded-2xl border border-[#0B1B3A]/20 text-[#0B1B3A] font-semibold hover:bg-white">Discuter gratuitement avec Clara →</Link>
           </div>
         </div>
       </section>

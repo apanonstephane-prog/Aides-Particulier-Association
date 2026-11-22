@@ -7,5 +7,6 @@ export const VISUALS = {
   association: `${CDN}/hf_20261014_083603_b3a8b274-c639-4d9b-b625-31542a273872.png`,
   senior: `${CDN}/hf_20261014_083605_8f317f49-cb9c-403c-8fa0-f13933733ca2.png`,
   etudiant: `${CDN}/hf_20261014_083603_329858e1-a753-4949-9c57-69c565b9781b.png`,
-  clara: `${CDN}/hf_20261014_083604_62ccd725-0bcf-4906-a8fc-e5a4a201150a.png`,
+  clara: '/visuals/clara-obsidian.webp',
+  claraAvatar: '/visuals/clara-avatar.webp',
 } as const

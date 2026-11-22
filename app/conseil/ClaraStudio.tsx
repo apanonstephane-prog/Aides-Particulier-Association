@@ -17,7 +17,7 @@ import ClaraWizard from '@/components/clara/ClaraWizard'
 import { VISUALS } from '@/lib/visuals'
 
 const WELCOME =
-  "Bonjour, je suis **Clara**. Racontez-moi votre situation avec vos mots : je repère vos droits probables, je vérifie les montants sur les sites officiels et je prépare votre démarche."
+  "Bonjour, je suis **Clara**. Racontez-moi une situation anonyme : je repère des pistes et vous guide vers les démarches et simulateurs officiels. N’indiquez aucune donnée personnelle."
 
 const PROFIL_IMG: Record<string, string> = { famille: VISUALS.hero, etudiant: VISUALS.etudiant, senior: VISUALS.senior, association: VISUALS.association }
 
@@ -27,7 +27,7 @@ export default function ClaraStudio() {
   const params = useSearchParams()
   const chat = useAgentChat('/api/conseil', { welcome: WELCOME })
   const demo = useDemoPlayer(runClaraTool)
-  const [mode, setMode] = useState<Mode>(params.get('demo') ? 'demo' : AGENT_LIVE && params.get('q') ? 'live' : 'diagnostic')
+  const [mode, setMode] = useState<Mode>(params.get('demo') ? 'demo' : AGENT_LIVE && (params.get('mode') === 'live' || params.get('q')) ? 'live' : 'diagnostic')
   const [demoId, setDemoId] = useState<string | null>(null)
   const [wizardKey, setWizardKey] = useState(0)
   const [preset, setPreset] = useState<string | null>(params.get('profil'))
@@ -43,8 +43,7 @@ export default function ClaraStudio() {
     started.current = true
     const d = params.get('demo')
     if (d) { setTimeout(() => playDemo(d), 0); return }
-    const q = params.get('q')
-    if (q && AGENT_LIVE) chat.send(q)
+    // Les données d'une URL ne sont pas envoyées automatiquement à l’IA.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -64,7 +63,7 @@ export default function ClaraStudio() {
         <section className="cshell">
           <header className="flex flex-wrap items-center gap-3 px-5 sm:px-6 py-4 border-b border-[#0B1B3A]/8">
             <div className={`cavatar ${chat.loading || demo.playing ? 'cavatar--live' : ''}`}>
-              <Image src={VISUALS.clara} alt="" width={96} height={96} className="w-full h-full object-cover" />
+              <Image src={VISUALS.claraAvatar} alt="" width={96} height={96} className="w-full h-full object-cover" />
             </div>
             <div className="flex-1 min-w-0">
               <h1 className="font-bold text-[#0B1B3A] leading-tight">Clara · aides & démarches</h1>
@@ -111,7 +110,7 @@ export default function ClaraStudio() {
 
         <aside className="hidden lg:flex flex-col gap-5 lg:sticky lg:top-24 self-start">
           <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl shadow-[#0B1B3A]/15">
-            <Image src={VISUALS.clara} alt="Des formulaires qui se transforment en chemin lumineux" fill sizes="340px" className="object-cover" />
+            <Image src={VISUALS.clara} alt="Clara, gardienne de l’accès aux droits" fill sizes="340px" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3A] via-[#0B1B3A]/20 to-transparent" />
             <div className="absolute bottom-0 p-5 text-white">
               <p className="text-xs uppercase tracking-[0.18em] text-[#F2B55F] font-semibold">Comment ça marche</p>
@@ -203,7 +202,7 @@ function LiveChat({ chat }: { chat: ReturnType<typeof useAgentChat> }) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(input) } }}
             rows={1}
-            placeholder="Décrivez votre situation : famille, travail, logement, revenus…"
+            placeholder="Décrivez une situation anonyme : foyer, activité, ordre de grandeur…"
             className="flex-1 bg-transparent resize-none outline-none text-[15px] text-[#0B1B3A] placeholder:text-slate-400 py-2 max-h-36"
             aria-label="Votre message à Clara"
           />
@@ -211,7 +210,7 @@ function LiveChat({ chat }: { chat: ReturnType<typeof useAgentChat> }) {
             ? <button type="button" onClick={chat.stop} className="csend csend--stop" aria-label="Arrêter">■</button>
             : <button type="submit" disabled={!input.trim()} className="csend" aria-label="Envoyer">↑</button>}
         </div>
-        <p className="text-[11px] text-slate-400 text-center mt-2">Ne partagez jamais votre n° de sécurité sociale, RIB ou mot de passe.</p>
+        <p className="text-[11px] text-slate-400 text-center mt-2">La conversation transmet votre message à Groq (États-Unis). N’indiquez ni identifiants ni coordonnées, ni détails médicaux. Pour une situation personnelle, choisissez le diagnostic guidé local.</p>
       </form>
     </>
   )

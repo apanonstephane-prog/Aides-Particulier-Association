@@ -70,10 +70,7 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <p>
               <strong>Conseillère IA « Clara » :</strong> les messages que vous écrivez à Clara sont
-              transmis à notre serveur puis au fournisseur du modèle d&apos;IA (Anthropic, Claude) pour
-              produire la réponse. Aides Connect ne les enregistre pas et ne crée aucun profil. Les
-              recherches de vérification sont limitées aux sites publics officiels. N&apos;y indiquez
-              jamais de numéro de sécurité sociale, de coordonnées bancaires ni de mot de passe.
+              transmis à notre serveur puis à Groq (États-Unis) pour produire la réponse. Aides Connect ne crée pas de profil à partir de ces messages. Selon la <a href="https://console.groq.com/docs/your-data" className="underline">documentation Groq</a>, des données peuvent être conservées temporairement en cas de problème de fiabilité ou d&apos;abus. N&apos;indiquez aucune donnée d&apos;identification, de coordonnées ni de détails médicaux ; utilisez de préférence le diagnostic guidé local pour une situation personnelle.
             </p>
             <p>
               <strong>Formulaire de contact :</strong> si vous nous contactez via le formulaire ou
