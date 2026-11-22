@@ -305,3 +305,7 @@ main>.ob-page-band:has(+.ob-map-viewport){margin:0;height:170px;min-height:170px
 /* Cadrage des scènes humaines : préserver les visages en couverture. */
 @media(min-width:701px){.ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media>.ob-hero-media-image{object-position:60% 8%}.ob-page-hero--compact:not(.ob-page-hero--card)>.ob-hero-media>.ob-hero-media-image{object-position:62% 10%}}
 @media(max-width:700px){.ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media .ob-hero-media-image{object-position:65% 18%}}
+
+/* Le bandeau commence sous la navigation fixe, pour garder les visages et le cadrage complet. */
+div.min-h-screen:has(> .ob-page-hero){padding-top:64px}
+@media(min-width:701px){div.min-h-screen>.ob-page-hero{padding-top:48px!important;min-height:clamp(430px,35vw,520px)}div.min-h-screen>.ob-page-hero>.ob-hero-media>.ob-hero-media-image{object-position:60% 3%}}
