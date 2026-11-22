@@ -309,3 +309,6 @@ main>.ob-page-band:has(+.ob-map-viewport){margin:0;height:170px;min-height:170px
 /* Le bandeau commence sous la navigation fixe, pour garder les visages et le cadrage complet. */
 div.min-h-screen:has(> .ob-page-hero){padding-top:64px}
 @media(min-width:701px){div.min-h-screen>.ob-page-hero{padding-top:48px!important;min-height:clamp(430px,35vw,520px)}div.min-h-screen>.ob-page-hero>.ob-hero-media>.ob-hero-media-image{object-position:60% 3%}}
+
+/* Fusion invisible du bord de l’image dans les bandeaux utilitaires. */
+@media(min-width:701px){.ob-studio-band .ob-hero-media-image,.ob-clara-studio-band .ob-hero-media-image,main>.ob-page-band:has(+.ob-map-viewport) .ob-hero-media-image{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 24%);mask-image:linear-gradient(90deg,transparent 0%,#000 24%)}}
