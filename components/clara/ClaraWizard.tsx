@@ -16,7 +16,7 @@ function Chips<T extends string>({ value, onChange, options }: { value: T | unde
   return (
     <div className="flex flex-wrap gap-2">
       {options.map(([v, l]) => (
-        <button key={v} type="button" onClick={() => onChange(v)} className={`wchip ${value === v ? 'wchip--on' : ''}`}>{l}</button>
+        <button key={v} type="button" onClick={() => onChange(v)} aria-pressed={value === v} className={`wchip ${value === v ? 'wchip--on' : ''}`}>{l}</button>
       ))}
     </div>
   )
@@ -190,7 +190,7 @@ export default function ClaraWizard({ initialKind, initialProfil, initialAsso }:
         <div className="flex items-center justify-between gap-3 px-5 sm:px-7 py-4 border-t border-[#0B1B3A]/8 bg-white/70">
           <button onClick={back} className="text-sm font-semibold text-slate-500 hover:text-[#0B1B3A] px-3 py-2">← Retour</button>
           <span className="text-xs text-slate-400">Étape {step} sur {steps}</span>
-          <button onClick={next} disabled={!canNext} className="px-6 py-3 rounded-xl bg-[#0B1B3A] text-white font-bold disabled:opacity-30 hover:bg-[#1F3B73] transition">
+          <button onClick={next} disabled={!canNext} className="oc-action px-6 py-3 rounded-xl font-bold">
             {step >= steps ? 'Voir mes aides →' : 'Continuer →'}
           </button>
         </div>

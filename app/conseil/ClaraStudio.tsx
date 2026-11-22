@@ -71,8 +71,8 @@ export default function ClaraStudio() {
             </div>
             <div className="flex w-full sm:w-auto gap-1 p-1 rounded-xl bg-[#F3EEE5]">
               {modes.map((m) => (
-                <button key={m.id} onClick={() => { if (m.id === 'demo') playDemo(demoId ?? CLARA_DEMOS[0].id); else { setMode(m.id); demo.stop() } }} className={`flex-1 sm:flex-none text-[13px] px-3.5 py-2 rounded-lg transition ${mode === m.id ? 'bg-white text-[#0B1B3A] font-semibold shadow-sm' : 'text-slate-500 hover:text-[#0B1B3A]'}`}>
-                  {m.label}
+                <button key={m.id} onClick={() => { if (m.id === 'demo') playDemo(demoId ?? CLARA_DEMOS[0].id); else { setMode(m.id); demo.stop() } }} aria-pressed={mode === m.id} className="oc-tab flex-1 sm:flex-none text-[13px] py-2">
+                  <span className="oc-glyph" aria-hidden="true">{m.id === 'diagnostic' ? '◇' : m.id === 'demo' ? '▶' : '✦'}</span><span>{m.label}</span>
                 </button>
               ))}
             </div>
@@ -109,13 +109,13 @@ export default function ClaraStudio() {
         </section>
 
         <aside className="hidden lg:flex flex-col gap-5 lg:sticky lg:top-24 self-start">
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl shadow-[#0B1B3A]/15">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl shadow-[#0B1B3A]/15">
             <Image src={VISUALS.clara} alt="Clara, gardienne de l’accès aux droits" fill sizes="340px" className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3A] via-[#0B1B3A]/20 to-transparent" />
-            <div className="absolute bottom-0 p-5 text-white">
+            <div className="absolute inset-0 pointer-events-none" />
+          </div>
+          <div className="rounded-2xl p-5 bg-[#221a2b] text-white border border-[#c29b5e]">
               <p className="text-xs uppercase tracking-[0.18em] text-[#F2B55F] font-semibold">Comment ça marche</p>
-              <p className="font-bold text-lg leading-snug mt-1">Situation → droits probables → formulaires officiels → dossier prêt</p>
-            </div>
+              <p className="font-bold text-lg leading-snug mt-1">Situation → pistes à vérifier → formulaires officiels → dossier prêt</p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 mb-3">Essayer avec un profil type</p>
@@ -154,7 +154,7 @@ function Thread({ messages }: { messages: AgentMessage[] }) {
           <div key={m.id} className="flex justify-end cfade"><div className="cuser">{m.content}</div></div>
         ) : (
           <div key={m.id} className="flex gap-3 cfade">
-            <div className="cavatar cavatar--sm"><Image src={VISUALS.clara} alt="" width={64} height={64} className="w-full h-full object-cover" /></div>
+            <div className="cavatar cavatar--sm"><Image src={VISUALS.claraAvatar} alt="" width={64} height={64} className="w-full h-full object-cover" /></div>
             <div className="flex-1 min-w-0 space-y-3">
               {m.tools.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">

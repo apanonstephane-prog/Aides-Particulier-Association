@@ -1,7 +1,7 @@
 // Agent OBSIDIAN — conversation Groq directe, protocole SSE conservé.
 import { NextRequest } from 'next/server'
 import { streamAgent, type ChatTurn } from '@/lib/agent/runtime'
-import { CLARA_TOOLS, claraSystemPrompt } from '@/lib/agent/aides'
+import { CLARA_TOOLS, claraSystemPrompt, claraDirectAnswer, claraGuardText } from '@/lib/agent/aides'
 import { AGENT_LIVE } from '@/lib/agent/flags'
 
 export const runtime = 'nodejs'
@@ -25,5 +25,5 @@ export async function POST(req: NextRequest) {
   // Ne pas transmettre d'identifiants manifestes au fournisseur IA.
   const confidential = /(?:\bFR\d{2}(?:[\s-]*[A-Z0-9]){23}\b|\b[12][\s.]?\d{2}[\s.]?\d{2}[\s.]?\d{2}[\s.]?\d{3}[\s.]?\d{3}[\s.]?\d{2}\b|[\w.+-]+@[\w.-]+\.[a-z]{2,}|(?:\+33|0)[1-9](?:[\s.-]*\d{2}){4})/i;
   if (history.some(m => confidential.test(m.content))) return Response.json({ error: 'N’envoyez pas de numéro personnel ni de coordonnées. Reformulez avec une situation anonyme ou utilisez le diagnostic guidé.' }, { status: 400 });
-  return streamAgent({ system: claraSystemPrompt(), tools: CLARA_TOOLS, maxTokens: 1100, fallback: "La conversation gratuite est momentanément indisponible. Le diagnostic guidé et les formulaires officiels restent accessibles." }, history)
+  return streamAgent({ system: claraSystemPrompt(), tools: CLARA_TOOLS, directAnswer: claraDirectAnswer, guardText: claraGuardText, maxTokens: 1100, fallback: "La conversation gratuite est momentanément indisponible. Le diagnostic guidé et les formulaires officiels restent accessibles." }, history)
 }

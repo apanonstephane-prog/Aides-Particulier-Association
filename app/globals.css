@@ -166,3 +166,18 @@ body {
 .wtoggle-dot::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 99px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: transform .2s; }
 .wtoggle--on { border-color: #E8962E; }
 .wtoggle--on .wtoggle-dot { background: #E8962E; } .wtoggle--on .wtoggle-dot::after { transform: translateX(14px); }
+
+/* OBSIDIAN / CLARA — route de lumière, boutons de soin et orientation */
+.cshell .oc-tab,.cshell .oc-action,.cshell .csend {font-weight:700;letter-spacing:.012em;min-height:44px;transition:background .2s,color .2s,border-color .2s,box-shadow .2s;}
+.cshell .oc-tab {display:flex;align-items:center;justify-content:center;gap:6px;padding-inline:10px;background:#fbf7ee;color:#40354b;border:1px solid #b99b6766;border-radius:14px;}
+.cshell .oc-tab[aria-pressed=true],.cshell .oc-action,.cshell .csend:not(.csend--stop){background:linear-gradient(135deg,#352940,#181420 65%);color:#fff9ed;border:1px solid #d0ad70;box-shadow:0 4px 12px #30243b26,inset 0 1px 0 #cfb07844;}
+.cshell .oc-glyph{color:#80612d;font-size:16px;line-height:1;font-weight:800;flex-shrink:0;}
+.cshell .oc-tab[aria-pressed=true] .oc-glyph{color:#f7d494;}
+.cshell .oc-tab:not([aria-pressed=true]):hover,.cshell .wchip:hover {background:#fff0d7;border-color:#a4773d;}
+.cshell .oc-action:hover:not(:disabled),.cshell .csend:not(:disabled):hover{background:#493658;box-shadow:0 4px 18px #a4824c55;}
+.cshell button:focus-visible,.cshell a:focus-visible{outline:3px solid #7549a2;outline-offset:3px;}
+.cshell .wchip{min-height:44px;border-color:#c19b6770;}
+.cshell .wchip--on{background:#f6e7c8;border-color:#a4773d;color:#2e2140;}
+.cshell .csend:disabled,.cshell .oc-action:disabled{opacity:.42;box-shadow:none;cursor:not-allowed;}
+@media(max-width:520px){.cshell .oc-tab{font-size:11px;gap:4px;padding-inline:4px}.cshell .oc-glyph{font-size:12px}.cshell .oc-tab span:last-child{line-height:1.15}}
+@media(prefers-reduced-motion:reduce){.cshell .oc-tab,.cshell .oc-action,.cshell .csend{transition:none!important;transform:none!important}}

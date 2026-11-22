@@ -23,6 +23,8 @@ export interface AgentConfig {
   tools: LocalTool[]
   maxTokens?: number
   fallback?: string
+  directAnswer?: (question: string, emit: ToolContext['emit']) => Promise<string | null>
+  guardText?: (text: string) => string
 }
 export interface ChatTurn { role: 'user' | 'assistant'; content: string }
 type Call = { id: string; type: 'function'; function: { name: string; arguments: string } }
@@ -36,7 +38,11 @@ export function streamAgent(config: AgentConfig, history: ChatTurn[]): Response 
   const readable = new ReadableStream({
     async start(controller) {
       const emit = (event: AgentEvent) => controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`))
-      try { await runLoop(config, history, emit) }
+      try {
+        const direct = config.directAnswer ? await config.directAnswer(history[history.length - 1]?.content ?? '', emit) : null
+        if (direct !== null) emit({ type: 'text', text: direct })
+        else await runLoop(config, history, emit)
+      }
       catch { emit({ type: 'text', text: `\n\n${fallback}` }) }
       finally { emit({ type: 'done' }); controller.close() }
     },
@@ -48,8 +54,8 @@ export function streamAgent(config: AgentConfig, history: ChatTurn[]): Response 
 }
 
 async function runLoop(config: AgentConfig, history: ChatTurn[], emit: ToolContext['emit']) {
-  const key = process.env.GROQ_API_KEY
-  if (!key) throw new Error('Groq unavailable')
+  const key = process.env.GROQ_API_KEY?.trim()
+  if (!key) { console.warn('[groq] missing_key'); throw new Error('Groq unavailable') }
   const toolsByName = new Map(config.tools.map(t => [t.definition.name, t]))
   const tools = config.tools.map(t => ({ type: 'function', function: {
     name: t.definition.name, description: t.definition.description,
@@ -63,19 +69,25 @@ async function runLoop(config: AgentConfig, history: ChatTurn[], emit: ToolConte
   const started = Date.now()
   for (let step = 0; step < MAX_STEPS; step++) {
     if (Date.now() - started > 38_000) throw new Error('Time limit')
-    const res = await fetch(ENDPOINT, {
+    let res: Response
+    try { res = await fetch(ENDPOINT, {
       method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: AGENT_MODEL, messages, tools, tool_choice: step === MAX_STEPS - 1 ? 'none' : 'auto',
         max_completion_tokens: Math.min(config.maxTokens ?? 1100, 1100), temperature: 0.25, reasoning_effort: 'low', reasoning_format: 'hidden' }),
       signal: AbortSignal.timeout(17_000), cache: 'no-store',
-    })
-    if (!res.ok) throw new Error(`Groq unavailable (${res.status})`) // pas de retry, ni de bascule payante
+    }) } catch { console.warn('[groq] transport_unavailable'); throw new Error('Groq unavailable') }
+    if (!res.ok) {
+      let code = 'unknown'
+      try { const e = await res.json(); if (typeof e?.error?.code === 'string' && /^[a-z0-9_]{1,60}$/i.test(e.error.code)) code = e.error.code } catch { /* pas de détail brut */ }
+      console.warn('[groq] upstream_status', res.status, code)
+      throw new Error(`Groq unavailable (${res.status})`) // pas de retry, ni de bascule payante
+    }
     const json = await res.json() as { choices?: { message?: Message }[] }
     const msg = json.choices?.[0]?.message
     if (!msg) throw new Error('Empty provider response')
     if (!msg.tool_calls?.length) {
       if (!msg.content?.trim()) throw new Error('Empty model response')
-      emit({ type: 'text', text: msg.content }); return
+      emit({ type: 'text', text: config.guardText ? config.guardText(msg.content) : msg.content }); return
     }
     if (step === MAX_STEPS - 1 || msg.tool_calls.length > 4) throw new Error('Tool budget exceeded')
     messages.push({ role: 'assistant', content: msg.content ?? null, tool_calls: msg.tool_calls })

@@ -130,8 +130,8 @@ export default function HomePage() {
             <div className="relative aspect-[4/5] max-w-lg rounded-[2rem] overflow-hidden shadow-2xl shadow-[#0B1B3A]/25">
               <Image src={VISUALS.clara} alt="Clara, déesse protectrice, tend une lumière pour guider vers les aides" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
             </div>
-            <div className="absolute -bottom-6 right-0 sm:-right-6 w-72 bg-white rounded-2xl p-4 shadow-2xl shadow-[#0B1B3A]/20 ring-1 ring-[#0B1B3A]/5 floaty">
-              <p className="text-[10px] uppercase tracking-[0.16em] font-semibold text-[#E8962E]">Pré-diagnostic</p>
+            <div className="relative mt-4 max-w-lg bg-white rounded-2xl p-4 shadow-xl shadow-[#0B1B3A]/15 ring-1 ring-[#0B1B3A]/5">
+              <p className="text-[10px] uppercase tracking-[0.16em] font-semibold text-[#E8962E]">Exemple de pré-diagnostic</p>
               <p className="font-bold text-[#0B1B3A]">4 droits probables</p>
               <div className="mt-2 space-y-1.5 text-[13px]">
                 {[['🏠', 'Aide au logement'], ['👨‍👩‍👧', 'Allocations familiales'], ['💶', "Prime d'activité"]].map(([i, n]) => (

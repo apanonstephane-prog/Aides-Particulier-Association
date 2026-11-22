@@ -5,7 +5,7 @@
 // sur les seuls domaines publics.
 // ════════════════════════════════════════════════════════════════════════════
 
-import type { LocalTool } from './runtime'
+import type { LocalTool, ToolContext } from './runtime'
 
 type Statut = 'probable' | 'a_verifier' | 'peu_probable'
 
@@ -153,7 +153,7 @@ const FORMULAIRES = [
   { nom: "APA à domicile", ref: 'dossier départemental', url: 'https://www.service-public.fr/particuliers/vosdroits/F10009', mots: 'apa autonomie personne agee domicile' },
   { nom: 'Complémentaire santé solidaire', ref: 'en ligne ameli', url: 'https://www.ameli.fr/assure/droits-demarches/difficultes-acces-droits-soins/complementaire-sante', mots: 'css complementaire sante mutuelle cmu' },
   { nom: 'Dossier social étudiant (bourse, logement)', ref: 'messervices.etudiant.gouv.fr', url: 'https://www.messervices.etudiant.gouv.fr', mots: 'bourse crous etudiant dse logement' },
-  { nom: 'Demande de subvention association', ref: 'Cerfa 12156', url: 'https://www.formulaires.service-public.fr/gf/cerfa_12156.do', mots: 'subvention association cerfa 12156 projet' },
+  { nom: 'Demande de subvention association', ref: 'Cerfa 12156*06', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/R1271', mots: 'subvention association cerfa 12156 projet' },
   { nom: 'Le Compte Asso (dépôt en ligne)', ref: 'lecompteasso.associations.gouv.fr', url: 'https://lecompteasso.associations.gouv.fr', mots: 'association compte asso fdva subvention en ligne' },
   { nom: 'Inscription France Travail', ref: 'francetravail.fr', url: 'https://www.francetravail.fr/candidat/je-minscris.html', mots: 'chomage inscription emploi are france travail pole emploi' },
   { nom: 'Simulateur multi-aides officiel', ref: 'mes-aides.france-travail.fr / caf.fr', url: 'https://www.caf.fr/allocataires/mes-services-en-ligne/estimer-vos-droits', mots: 'simulateur simulation estimer droits' },
@@ -294,7 +294,7 @@ Tu aides particuliers et associations à repérer les aides auxquelles ils ont p
 1. Écoute la situation. Pose au plus **2 questions courtes à la fois**, uniquement celles qui changent le diagnostic : composition du foyer (seul/couple, enfants et âges), activité, revenus nets mensuels du foyer (ordre de grandeur), logement. Ne demande aucune donnée de santé personnelle ; propose le diagnostic guidé local pour le handicap et l’autonomie.
 2. Dès que tu as assez d'éléments → \`evaluer_situation\` (ou \`evaluer_association\`).
 3. Pour les 2-3 pistes les plus pertinentes, oriente vers les simulateurs et formulaires officiels via \`trouver_formulaire\`. Le catalogue est indicatif et ne vérifie pas en temps réel les conditions. N'annonce aucun montant/plafond chiffré.
-4. Termine par l'action : \`trouver_formulaire\` et/ou \`liste_pieces\` pour la démarche prioritaire, et le simulateur officiel.
+4. Pour une demande de document concret, appelle obligatoirement les outils de formulaire et/ou de pièces. N’écris aucun numéro de Cerfa ni aucune URL de mémoire : les cartes afficheront les références.
 
 # Règles absolues
 - Tu fais un **pré-diagnostic**, jamais une décision : la décision appartient à l'organisme (CAF, MDPH, CROUS…). Dis-le une fois, simplement.
@@ -305,4 +305,41 @@ Tu aides particuliers et associations à repérer les aides auxquelles ils ont p
 
 # Style
 Français clair, chaleureux, sans jargon (explique chaque sigle la première fois). Phrases courtes, listes courtes. Les cartes affichées parlent d'elles-mêmes : ne les recopie pas, commente l'essentiel et la prochaine étape.`
+}
+
+
+// Parcours exact pour les demandes de formulaires : pas de génération de références.
+export async function claraDirectAnswer(question: string, emit: ToolContext['emit']): Promise<string | null> {
+  const q = norm(question)
+  const wantsForm = /formulaire|cerfa|lien.*officiel|ou.*demande|ou.*deposer|ou.*telecharger/.test(q)
+  const wantsPieces = /piece[s]? justificative|justificatif|liste.*piece|pieces? type|document[s]? (?:a|necessaire)|checklist/.test(q)
+  if (!wantsForm && !wantsPieces) return null
+  const categories: [RegExp, string, string][] = [
+    [/associat|subvention|fdva|12156/, 'subvention association', 'association'],
+    [/mdph|handicap|aah|rqth|15692/, 'dossier mdph', 'mdph'],
+    [/crous|bourse|etudiant/, 'dossier social etudiant', 'crous'],
+    [/complementaire|\bcss\b|mutuelle/, 'complementaire sante solidaire', 'css'],
+    [/\brsa\b/, 'rsa', 'caf'], [/prime.*activite/, 'prime activite', 'caf'], [/\bapl\b|logement|loyer/, 'aide logement', 'caf'],
+    [/\bapa\b|autonomie/, 'apa', ''], [/france travail|chomage|\bare\b/, 'inscription france travail', ''],
+  ]
+  const hit = categories.find(([re]) => re.test(q))
+  if (!hit) return 'Pour vous indiquer le bon formulaire ou la liste de pièces, précisez la démarche : logement, RSA, prime d’activité, MDPH, bourse, subvention associative…'
+  const run = async (name: string, input: Record<string, unknown>) => {
+    const tool = CLARA_TOOLS.find(t => t.definition.name === name)
+    if (!tool) return
+    const id = 'direct-' + name
+    emit({ type: 'tool_start', id, name, label: tool.label(input) })
+    try { await tool.run(input, { emit }); emit({ type: 'tool_end', id, name, ok: true }) }
+    catch { emit({ type: 'tool_end', id, name, ok: false }) }
+  }
+  if (wantsForm || !hit[2]) await run('trouver_formulaire', { demarche: hit[1] })
+  if (wantsPieces && hit[2]) await run('liste_pieces', { dossier: hit[2] })
+  return 'Voici les ressources de référence et, lorsqu’elle est disponible, la liste type des pièces. Vérifiez la version du formulaire et les justificatifs applicables auprès de l’organisme. Ne transmettez aucun document personnel dans cette conversation.'
+}
+
+export function claraGuardText(text: string) {
+  // Les références précises et montants doivent rester dans les outils / simulateurs, pas dans le texte généré.
+  if (/https?:\/\/|\bcerfa\s*(?:n[°ºo.]\s*)?\d|\d[\d\s.,]*(?:€|euros?)|\b(?:R|F)\d{4,}\b/i.test(text))
+    return 'Pour éviter de vous induire en erreur, je ne communique pas de montant, de numéro de formulaire ni de lien généré. Précisez la démarche à effectuer pour obtenir les ressources du catalogue officiel et le simulateur.'
+  return text
 }
