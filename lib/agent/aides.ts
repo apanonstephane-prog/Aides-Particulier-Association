@@ -339,7 +339,7 @@ export async function claraDirectAnswer(question: string, emit: ToolContext['emi
 
 export function claraGuardText(text: string) {
   // Les références précises et montants doivent rester dans les outils / simulateurs, pas dans le texte généré.
-  if (/https?:\/\/|\bcerfa\s*(?:n[°ºo.]\s*)?\d|\d[\d\s.,]*(?:€|euros?)|\b(?:R|F)\d{4,}\b/i.test(text))
+  if (/https?:\/\/|\bcerfa\s*(?:n[°ºo.]\s*)?\d|\d[\d\s.,]*(?:k\s*)?(?:€|euros?)|\b(?:R|F)\d{4,}\b/i.test(text))
     return 'Pour éviter de vous induire en erreur, je ne communique pas de montant, de numéro de formulaire ni de lien généré. Précisez la démarche à effectuer pour obtenir les ressources du catalogue officiel et le simulateur.'
   return text
 }

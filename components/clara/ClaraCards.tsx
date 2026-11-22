@@ -10,7 +10,7 @@ interface Aide { id: string; nom: string; organisme: string; categorie: string; 
 interface Form { nom: string; ref: string; url: string }
 
 const STATUT: Record<Statut, { label: string; cls: string; dot: string }> = {
-  probable: { label: 'Droit probable', cls: 'bg-emerald-50 text-emerald-800 ring-emerald-200', dot: 'bg-emerald-500' },
+  probable: { label: 'Piste prioritaire', cls: 'bg-emerald-50 text-emerald-800 ring-emerald-200', dot: 'bg-emerald-500' },
   a_verifier: { label: 'À vérifier', cls: 'bg-amber-50 text-amber-800 ring-amber-200', dot: 'bg-amber-500' },
   peu_probable: { label: 'Peu probable', cls: 'bg-slate-100 text-slate-600 ring-slate-200', dot: 'bg-slate-400' },
 }
@@ -107,7 +107,7 @@ function Checklist({ data }: { data: { titre: string; pieces: string[] } }) {
     try { localStorage.setItem(key, JSON.stringify(next)) } catch { /* ignore */ }
     return next
   })
-  const n = Object.values(done).filter(Boolean).length
+  const n = data.pieces.filter((_, i) => !!done[i]).length
   const pct = Math.round((n / data.pieces.length) * 100)
   return (
     <div className="ccard">
@@ -129,7 +129,13 @@ function Checklist({ data }: { data: { titre: string; pieces: string[] } }) {
           </li>
         ))}
       </ul>
-      {pct === 100 && <p className="mt-3 text-sm font-semibold text-emerald-700">Dossier complet — vous pouvez déposer votre demande. 🎉</p>}
+      <button type="button" className="oc-action w-full px-4 py-2 rounded-xl mt-4 text-sm" onClick={() => {
+        const content = ['CLARA — Aides Connect', data.titre, '', ...data.pieces.map((p, i) => (done[i] ? '[x] ' : '[ ] ') + p), '', 'Liste indicative : vérifiez les pièces exactes auprès de l’organisme. Aucun document personnel n’est inclus.'].join('\n')
+        const url = URL.createObjectURL(new Blob([content], { type: 'text/plain;charset=utf-8' }))
+        const a = document.createElement('a'); a.href = url; a.download = 'clara-checklist.txt'; a.click()
+        setTimeout(() => URL.revokeObjectURL(url), 1000)
+      }}>↓ Télécharger ma liste de pièces</button>
+      {pct === 100 && <p className="mt-3 text-sm font-semibold text-emerald-700">Liste type cochée — vérifiez les justificatifs exacts demandés par l’organisme.</p>}
     </div>
   )
 }

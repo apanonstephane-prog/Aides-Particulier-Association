@@ -175,7 +175,7 @@ function Thread({ messages }: { messages: AgentMessage[] }) {
               {m.cards.map((c) => <ClaraCardView key={c.id} card={c} />)}
               {m.sources.length > 0 && (
                 <div className="csources">
-                  <span>Vérifié sur</span>
+                  <span>Sources de référence</span>
                   {m.sources.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer" title={s.title}>{new URL(s.url).hostname.replace('www.', '')}</a>)}
                 </div>
               )}
