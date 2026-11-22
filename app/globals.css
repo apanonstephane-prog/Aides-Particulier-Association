@@ -301,3 +301,7 @@ main>.ob-page-band:has(+.ob-map-viewport){margin:0;height:170px;min-height:170px
 
 .ob-page-hero h1>span{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-style:italic;letter-spacing:-.04em}
 .ob-page-hero p[style*="#D9B778"]{color:#f0d398!important;font-family:Georgia,'Times New Roman',serif;font-style:italic}
+
+/* Cadrage des scènes humaines : préserver les visages en couverture. */
+@media(min-width:701px){.ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media>.ob-hero-media-image{object-position:60% 8%}.ob-page-hero--compact:not(.ob-page-hero--card)>.ob-hero-media>.ob-hero-media-image{object-position:62% 10%}}
+@media(max-width:700px){.ob-page-hero:not(.ob-page-hero--card)>.ob-hero-media .ob-hero-media-image{object-position:65% 18%}}
