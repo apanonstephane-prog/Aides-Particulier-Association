@@ -39,7 +39,7 @@ function EligibilityCard({ data }: { data: { aides: Aide[]; association?: boolea
       <div className="flex items-end justify-between gap-3 mb-4">
         <div>
           <p className="ckicker">Pré-diagnostic {data.association ? 'association' : ''}</p>
-          <p className="text-xl font-bold text-[#0B1B3A] leading-tight">
+          <p className="text-xl font-bold text-[#30243C] leading-tight">
             {probables} droit{probables > 1 ? 's' : ''} probable{probables > 1 ? 's' : ''}
             <span className="text-slate-400 font-medium"> · {data.aides.length - probables} à vérifier</span>
           </p>
@@ -54,14 +54,14 @@ function EligibilityCard({ data }: { data: { aides: Aide[]; association?: boolea
             <summary>
               <span className="caide-icon">{CAT_ICON[a.categorie] ?? '📌'}</span>
               <span className="flex-1 min-w-0">
-                <span className="block font-semibold text-[#0B1B3A] text-[15px] leading-snug">{a.nom}</span>
+                <span className="block font-semibold text-[#30243C] text-[15px] leading-snug">{a.nom}</span>
                 <span className="block text-xs text-slate-500">{a.organisme}</span>
               </span>
               <span className={`cbadge ring-1 ${STATUT[a.statut].cls}`}>{STATUT[a.statut].label}</span>
             </summary>
             <div className="pl-12 pr-2 pb-3 pt-1">
               <ul className="space-y-1 text-[13.5px] text-slate-600">
-                {a.raisons.map((r) => <li key={r} className="flex gap-2"><span className="text-[#E8962E]">›</span>{r}</li>)}
+                {a.raisons.map((r) => <li key={r} className="flex gap-2"><span className="text-[#B58A45]">›</span>{r}</li>)}
               </ul>
               <div className="flex flex-wrap gap-2 mt-3">
                 <a href={a.info} target="_blank" rel="noopener noreferrer" className="clink">Fiche officielle ↗</a>
@@ -83,12 +83,12 @@ function FormsCard({ data }: { data: { forms: Form[] } }) {
       <div className="grid gap-2 mt-2">
         {data.forms.map((f) => (
           <a key={f.url} href={f.url} target="_blank" rel="noopener noreferrer" className="cform">
-            <span className="w-10 h-10 rounded-xl bg-[#0B1B3A] text-white grid place-items-center text-lg flex-shrink-0">📄</span>
+            <span className="w-10 h-10 rounded-xl bg-[#30243C] text-white grid place-items-center text-lg flex-shrink-0">📄</span>
             <span className="flex-1 min-w-0">
-              <span className="block font-semibold text-[#0B1B3A] text-sm">{f.nom}</span>
+              <span className="block font-semibold text-[#30243C] text-sm">{f.nom}</span>
               <span className="block text-xs text-slate-500">{f.ref}</span>
             </span>
-            <span className="text-[#E8962E] font-bold">↗</span>
+            <span className="text-[#B58A45] font-bold">↗</span>
           </a>
         ))}
       </div>
@@ -114,7 +114,7 @@ function Checklist({ data }: { data: { titre: string; pieces: string[] } }) {
       <div className="flex items-center justify-between gap-3">
         <div>
           <p className="ckicker">Pièces à préparer</p>
-          <p className="font-bold text-[#0B1B3A]">{data.titre}</p>
+          <p className="font-bold text-[#30243C]">{data.titre}</p>
         </div>
         <div className="cring" style={{ ['--p' as string]: `${pct}%` }}><span>{n}/{data.pieces.length}</span></div>
       </div>

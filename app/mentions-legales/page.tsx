@@ -55,7 +55,7 @@ export default function MentionsLegalesPage() {
               <p>1093 Chemin des Moulins — 32600 Pujaudran</p>
               <p>
                 Email :{" "}
-                <a href="mailto:contact@aides-connect.fr" className="text-blue-600 hover:underline">
+                <a href="mailto:contact@aides-connect.fr" className="text-[#61436f] hover:underline">
                   contact@aides-connect.fr
                 </a>
               </p>
@@ -67,7 +67,7 @@ export default function MentionsLegalesPage() {
               <p><strong>Stéphane APANON</strong></p>
               <p>
                 Contact :{" "}
-                <a href="mailto:contact@aides-connect.fr" className="text-blue-600 hover:underline">
+                <a href="mailto:contact@aides-connect.fr" className="text-[#61436f] hover:underline">
                   contact@aides-connect.fr
                 </a>
               </p>
@@ -82,7 +82,7 @@ export default function MentionsLegalesPage() {
               Site web :{" "}
               <a
                 href="https://vercel.com"
-                className="text-blue-600 hover:underline"
+                className="text-[#61436f] hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -136,7 +136,7 @@ export default function MentionsLegalesPage() {
           <Section title="Contact">
             <p>Pour toute question relative aux présentes mentions légales :</p>
             <p>
-              <a href="mailto:contact@aides-connect.fr" className="text-blue-600 hover:underline">
+              <a href="mailto:contact@aides-connect.fr" className="text-[#61436f] hover:underline">
                 contact@aides-connect.fr
               </a>
             </p>

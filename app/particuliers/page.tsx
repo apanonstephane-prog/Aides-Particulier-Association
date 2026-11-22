@@ -11,9 +11,9 @@ const situations = [
     label: "Célibataire",
     desc: "Sans enfant à charge, vivant seul(e)",
     color: "from-blue-50 to-cyan-50",
-    border: "border-blue-200",
-    hover: "hover:border-blue-400 hover:bg-blue-50",
-    selected: "border-blue-500 bg-blue-50 ring-2 ring-blue-300",
+    border: "border-[#d8c9e0]",
+    hover: "hover:border-blue-400 hover:bg-[#f1ebf5]",
+    selected: "border-blue-500 bg-[#f1ebf5] ring-2 ring-blue-300",
     tag: "bg-blue-100 text-blue-700",
     nbAides: 12,
   },
@@ -178,7 +178,7 @@ export default function ParticuliersPage() {
                 `}
               >
                 {selected === sit.id && (
-                  <div className="absolute top-3 right-3 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="absolute top-3 right-3 w-5 h-5 bg-[#61436f] rounded-full flex items-center justify-center">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -214,7 +214,7 @@ export default function ParticuliersPage() {
                 </div>
                 <Link
                   href={`/resultats/particuliers/${selected}`}
-                  className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+                  className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-[#61436f] text-white font-bold rounded-xl hover:bg-[#3f2d4d] transition-colors shadow-md hover:shadow-lg"
                 >
                   Voir mes aides
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -251,7 +251,7 @@ export default function ParticuliersPage() {
             },
           ].map((cat, i) => (
             <Link key={i} href={cat.href}
-              className="flex gap-4 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+              className="flex gap-4 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-[#d8c9e0] transition-all">
               <span className="text-3xl">{cat.icon}</span>
               <div>
                 <h3 className="font-semibold text-slate-800 mb-1">{cat.title}</h3>

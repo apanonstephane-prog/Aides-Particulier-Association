@@ -50,7 +50,7 @@ export default function PolitiqueConfidentialitePage() {
               <p><strong>Stéphane APANON</strong></p>
               <p>Entrepreneur Individuel — SIRET : 750 420 200 00024</p>
               <p>1093 Chemin des Moulins — 32600 Pujaudran</p>
-              <p>Contact : <a href="mailto:contact@aides-connect.fr" className="text-blue-600 hover:underline">contact@aides-connect.fr</a></p>
+              <p>Contact : <a href="mailto:contact@aides-connect.fr" className="text-[#61436f] hover:underline">contact@aides-connect.fr</a></p>
             </div>
           </Section>
 
@@ -108,7 +108,7 @@ export default function PolitiqueConfidentialitePage() {
           <Section title="Durée de conservation">
             <p>
               Les données de navigation sont conservées par l&apos;hébergeur selon sa propre
-              politique (consultable sur <a href="https://vercel.com/legal/privacy-policy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">vercel.com</a>).
+              politique (consultable sur <a href="https://vercel.com/legal/privacy-policy" className="text-[#61436f] hover:underline" target="_blank" rel="noopener noreferrer">vercel.com</a>).
             </p>
             <p>
               Les données de contact sont conservées le temps nécessaire au traitement de la demande,
@@ -162,7 +162,7 @@ export default function PolitiqueConfidentialitePage() {
             </ul>
             <p>
               Pour exercer ces droits, contactez-nous à :{" "}
-              <a href="mailto:contact@aides-connect.fr" className="text-blue-600 hover:underline">
+              <a href="mailto:contact@aides-connect.fr" className="text-[#61436f] hover:underline">
                 contact@aides-connect.fr
               </a>
             </p>
@@ -170,7 +170,7 @@ export default function PolitiqueConfidentialitePage() {
               En cas de désaccord, vous pouvez introduire une réclamation auprès de la{" "}
               <a
                 href="https://www.cnil.fr"
-                className="text-blue-600 hover:underline"
+                className="text-[#61436f] hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >

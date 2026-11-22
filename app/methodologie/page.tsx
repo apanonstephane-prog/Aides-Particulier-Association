@@ -109,7 +109,7 @@ export default function MethodologiePage() {
           </section>
 
           {/* Bloc signalement */}
-          <div className="p-6 bg-blue-50 border border-blue-100 rounded-2xl">
+          <div className="p-6 bg-[#f1ebf5] border border-blue-100 rounded-2xl">
             <h3 className="font-semibold text-blue-900 mb-2">Vous avez repéré une erreur ou un lien obsolète ?</h3>
             <p className="text-blue-700 text-sm mb-4 leading-relaxed">
               Si vous constatez une information incorrecte, un lien cassé ou une aide qui n&apos;existe
@@ -117,7 +117,7 @@ export default function MethodologiePage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#61436f] text-white text-sm font-semibold rounded-lg hover:bg-[#3f2d4d] transition-colors"
             >
               Nous contacter
             </Link>

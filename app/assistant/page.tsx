@@ -100,7 +100,7 @@ export default function AssistantPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex items-start gap-3 p-4 rounded-2xl border-2 text-left transition-all
                 ${activeTab === tab.id
-                  ? "border-blue-500 bg-blue-50 shadow-md"
+                  ? "border-blue-500 bg-[#f1ebf5] shadow-md"
                   : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm"
                 }`}
             >
@@ -179,7 +179,7 @@ export default function AssistantPage() {
                 href={f.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-3 p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all group"
+                className="flex items-start gap-3 p-4 rounded-xl border border-slate-100 hover:border-[#d8c9e0] hover:bg-[#f1ebf5]/50 transition-all group"
               >
                 <span className="text-2xl flex-shrink-0">📋</span>
                 <div className="min-w-0">
@@ -213,7 +213,7 @@ export default function AssistantPage() {
 
         {/* Retour à la recherche */}
         <div className="flex flex-col sm:flex-row gap-3 items-center pt-4">
-          <Link href="/particuliers" className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md">
+          <Link href="/particuliers" className="flex items-center gap-2 px-5 py-2.5 bg-[#61436f] text-white text-sm font-semibold rounded-xl hover:bg-[#3f2d4d] transition-colors shadow-md">
             👤 Chercher des aides particuliers
           </Link>
           <Link href="/associations" className="flex items-center gap-2 px-5 py-2.5 border border-slate-200 text-slate-600 text-sm font-medium rounded-xl hover:bg-slate-50 transition-colors">

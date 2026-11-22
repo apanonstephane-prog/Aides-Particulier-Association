@@ -19,7 +19,7 @@ import { VISUALS } from '@/lib/visuals'
 const WELCOME =
   "Bonjour, je suis **Clara**. Racontez-moi une situation anonyme : je repère des pistes et vous guide vers les démarches et simulateurs officiels. N’indiquez aucune donnée personnelle."
 
-const PROFIL_IMG: Record<string, string> = { famille: VISUALS.hero, etudiant: VISUALS.etudiant, senior: VISUALS.senior, association: VISUALS.association }
+const PROFIL_IMG: Record<string, string> = { famille: VISUALS.family, etudiant: VISUALS.etudiant, senior: VISUALS.senior, association: VISUALS.association }
 
 type Mode = 'diagnostic' | 'demo' | 'live'
 
@@ -58,15 +58,15 @@ export default function ClaraStudio() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#FBF7F0] pt-16">
+    <div className="min-h-screen bg-[#FBF7EF] pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10 grid lg:grid-cols-[1fr_340px] gap-8">
         <section className="cshell">
-          <header className="flex flex-wrap items-center gap-3 px-5 sm:px-6 py-4 border-b border-[#0B1B3A]/8">
+          <header className="flex flex-wrap items-center gap-3 px-5 sm:px-6 py-4 border-b border-[#30243C]/8">
             <div className={`cavatar ${chat.loading || demo.playing ? 'cavatar--live' : ''}`}>
               <Image src={VISUALS.claraAvatar} alt="" width={96} height={96} className="w-full h-full object-cover" />
             </div>
             <div className="flex-1 min-w-0">
-              <h1 className="font-bold text-[#0B1B3A] leading-tight">Clara · aides & démarches</h1>
+              <h1 className="font-bold text-[#30243C] leading-tight">Clara · aides & démarches</h1>
               <p className="text-xs text-slate-500">Gratuit · sans compte · liens vers les sources officielles</p>
             </div>
             <div className="flex w-full sm:w-auto gap-1 p-1 rounded-xl bg-[#F3EEE5]">
@@ -78,6 +78,7 @@ export default function ClaraStudio() {
             </div>
           </header>
 
+          <div className="flex flex-wrap gap-2 px-4 py-2 border-b border-[#d9b77835] text-xs"><a href="/proximite" className="oc-tab px-3 py-2 !min-h-[38px]">⌖ Guichets publics</a><a href="/plan-action" className="oc-tab px-3 py-2 !min-h-[38px]">◷ Mes échéances</a></div>
           <div className="flex-1 min-h-0 flex flex-col">
             {mode === 'diagnostic' && (
               <ClaraWizard
@@ -90,11 +91,11 @@ export default function ClaraStudio() {
 
             {mode === 'demo' && (
               <>
-                <div className="px-5 sm:px-6 py-3 border-b border-[#0B1B3A]/8">
+                <div className="px-5 sm:px-6 py-3 border-b border-[#30243C]/8">
                   <p className="text-[11.5px] text-slate-500 mb-2">Conversations rejouées : les outils de Clara tournent réellement, le texte est généré à partir de leurs résultats.</p>
                   <div className="flex gap-1.5 overflow-x-auto pb-1">
                     {CLARA_DEMOS.map((d) => (
-                      <button key={d.id} onClick={() => playDemo(d.id)} className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border transition ${demoId === d.id ? 'border-[#E8962E] text-[#B8691A] bg-[#FFF4E5]' : 'border-[#e6e1d7] text-slate-600 hover:border-[#E8962E]'}`}>
+                      <button key={d.id} onClick={() => playDemo(d.id)} className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border transition ${demoId === d.id ? 'border-[#B58A45] text-[#B8691A] bg-[#FFF4E5]' : 'border-[#e6e1d7] text-slate-600 hover:border-[#B58A45]'}`}>
                         {d.icon} {d.title}
                       </button>
                     ))}
@@ -109,13 +110,14 @@ export default function ClaraStudio() {
         </section>
 
         <aside className="hidden lg:flex flex-col gap-5 lg:sticky lg:top-24 self-start">
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl shadow-[#0B1B3A]/15">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl shadow-[#30243C]/15">
             <Image src={VISUALS.clara} alt="Clara, gardienne de l’accès aux droits" fill sizes="340px" className="object-cover" />
             <div className="absolute inset-0 pointer-events-none" />
           </div>
           <div className="rounded-2xl p-5 bg-[#221a2b] text-white border border-[#c29b5e]">
-              <p className="text-xs uppercase tracking-[0.18em] text-[#F2B55F] font-semibold">Comment ça marche</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-[#D9B778] font-semibold">Comment ça marche</p>
               <p className="font-bold text-lg leading-snug mt-1">Situation → pistes à vérifier → formulaires officiels → dossier prêt</p>
+              <a href="/proximite" className="inline-flex mt-4 font-semibold text-[#D9B778] text-sm">⌖ Trouver un guichet officiel ↗</a>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 mb-3">Essayer avec un profil type</p>
@@ -126,14 +128,14 @@ export default function ClaraStudio() {
                     <Image src={PROFIL_IMG[p.id]} alt="" fill sizes="64px" className="object-cover group-hover:scale-110 transition duration-500" />
                   </div>
                   <div className="min-w-0">
-                    <p className="font-semibold text-[#0B1B3A] text-sm">{p.titre}</p>
+                    <p className="font-semibold text-[#30243C] text-sm">{p.titre}</p>
                     <p className="text-xs text-slate-500 line-clamp-2 leading-snug mt-0.5">{p.texte}</p>
                   </div>
                 </button>
               ))}
             </div>
           </div>
-          <ul className="text-[13px] text-slate-600 space-y-2 bg-white rounded-2xl p-4 ring-1 ring-[#0B1B3A]/8">
+          <ul className="text-[13px] text-slate-600 space-y-2 bg-white rounded-2xl p-4 ring-1 ring-[#30243C]/8">
             <li className="flex gap-2"><span>🔒</span>Diagnostic calculé dans votre navigateur : rien n’est envoyé</li>
             <li className="flex gap-2"><span>🏛️</span>Chaque aide renvoie à sa fiche et à son simulateur officiels</li>
             <li className="flex gap-2"><span>⚖️</span>Orientation, pas décision : l’organisme tranche</li>
@@ -195,15 +197,15 @@ function LiveChat({ chat }: { chat: ReturnType<typeof useAgentChat> }) {
   return (
     <>
       <Thread messages={chat.messages} />
-      <form onSubmit={(e) => { e.preventDefault(); submit(input) }} className="p-3 sm:p-4 border-t border-[#0B1B3A]/8 bg-white/70">
+      <form onSubmit={(e) => { e.preventDefault(); submit(input) }} className="p-3 sm:p-4 border-t border-[#30243C]/8 bg-white/70">
         <div className="ccomposer">
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(input) } }}
             rows={1}
-            placeholder="Décrivez une situation anonyme : foyer, activité, ordre de grandeur…"
-            className="flex-1 bg-transparent resize-none outline-none text-[15px] text-[#0B1B3A] placeholder:text-slate-400 py-2 max-h-36"
+            placeholder="Votre question anonyme…"
+            className="flex-1 bg-transparent resize-none outline-none text-[15px] text-[#30243C] placeholder:text-slate-400 py-2 max-h-36"
             aria-label="Votre message à Clara"
           />
           {chat.loading

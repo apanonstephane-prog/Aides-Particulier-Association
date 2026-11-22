@@ -175,7 +175,7 @@ export default function AutoFillWizard() {
               onClick={() => step > s.id || step === s.id ? setStep(s.id) : null}
               className={`flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-xl text-xs font-medium transition-all
                 ${step === s.id
-                  ? "bg-blue-600 text-white shadow-md"
+                  ? "bg-[#61436f] text-white shadow-md"
                   : step > s.id
                     ? "bg-green-100 text-green-700 cursor-pointer hover:bg-green-200"
                     : "bg-slate-100 text-slate-400 cursor-not-allowed"
@@ -192,7 +192,7 @@ export default function AutoFillWizard() {
       </div>
 
       {/* Titre de l'étape */}
-      <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl border border-blue-100">
+      <div className="flex items-center gap-3 p-4 bg-[#f1ebf5] rounded-xl border border-blue-100">
         <span className="text-2xl">{steps[step - 1].icon}</span>
         <div>
           <p className="font-semibold text-slate-800">{steps[step - 1].label}</p>
@@ -209,7 +209,7 @@ export default function AutoFillWizard() {
               {["M.", "Mme"].map(c => (
                 <button key={c} onClick={() => set("civilite", c)}
                   className={`flex-1 py-2.5 rounded-xl border text-sm font-medium transition-all
-                    ${form.civilite === c ? "border-blue-500 bg-blue-50 text-blue-700" : "border-slate-200 text-slate-600 hover:border-slate-300"}`}>
+                    ${form.civilite === c ? "border-blue-500 bg-[#f1ebf5] text-blue-700" : "border-slate-200 text-slate-600 hover:border-slate-300"}`}>
                   {c}
                 </button>
               ))}
@@ -308,7 +308,7 @@ export default function AutoFillWizard() {
               {situationFamilialeOptions.map(opt => (
                 <button key={opt} onClick={() => set("situationFamiliale", opt)}
                   className={`py-2 px-3 rounded-xl border text-xs font-medium transition-all text-left
-                    ${form.situationFamiliale === opt ? "border-blue-500 bg-blue-50 text-blue-700" : "border-slate-200 text-slate-600 hover:border-slate-300"}`}>
+                    ${form.situationFamiliale === opt ? "border-blue-500 bg-[#f1ebf5] text-blue-700" : "border-slate-200 text-slate-600 hover:border-slate-300"}`}>
                   {opt}
                 </button>
               ))}
@@ -334,7 +334,7 @@ export default function AutoFillWizard() {
               {situationProOptions.map(opt => (
                 <button key={opt} onClick={() => set("situationPro", opt)}
                   className={`py-2 px-3 rounded-xl border text-xs font-medium transition-all text-left
-                    ${form.situationPro === opt ? "border-blue-500 bg-blue-50 text-blue-700" : "border-slate-200 text-slate-600 hover:border-slate-300"}`}>
+                    ${form.situationPro === opt ? "border-blue-500 bg-[#f1ebf5] text-blue-700" : "border-slate-200 text-slate-600 hover:border-slate-300"}`}>
                   {opt}
                 </button>
               ))}
@@ -448,7 +448,7 @@ export default function AutoFillWizard() {
           <div className="flex flex-wrap gap-2">
             <button onClick={copyToClipboard}
               className={`flex-1 flex items-center justify-center gap-2 py-3 font-semibold rounded-xl transition-all
-                ${copied ? "bg-green-600 text-white" : "bg-blue-600 text-white hover:bg-blue-700"}`}>
+                ${copied ? "bg-green-600 text-white" : "bg-[#61436f] text-white hover:bg-[#3f2d4d]"}`}>
               {copied ? (
                 <><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> Copié !</>
               ) : (
@@ -467,7 +467,7 @@ export default function AutoFillWizard() {
             </button>
           </div>
 
-          <div className="p-3 bg-blue-50 rounded-xl text-xs text-blue-700">
+          <div className="p-3 bg-[#f1ebf5] rounded-xl text-xs text-blue-700">
             <strong>Comment utiliser ?</strong> Cliquez &quot;Copier mes informations&quot;, puis collez (Ctrl+V) dans n&apos;importe quel formulaire administratif en ligne ou document Word.
           </div>
         </div>
@@ -483,7 +483,7 @@ export default function AutoFillWizard() {
             </button>
           )}
           <button onClick={() => setStep(s => s + 1)}
-            className="flex-1 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors">
+            className="flex-1 py-2.5 bg-[#61436f] text-white text-sm font-semibold rounded-xl hover:bg-[#3f2d4d] transition-colors">
             {step === 4 ? "Voir mon profil →" : "Continuer →"}
           </button>
         </div>
@@ -504,7 +504,7 @@ export default function AutoFillWizard() {
             />
             <div className="flex gap-2 mt-4">
               <button onClick={saveProfile}
-                className="flex-1 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors">
+                className="flex-1 py-2.5 bg-[#61436f] text-white text-sm font-semibold rounded-xl hover:bg-[#3f2d4d] transition-colors">
                 Sauvegarder
               </button>
               <button onClick={() => setShowSaveModal(false)}

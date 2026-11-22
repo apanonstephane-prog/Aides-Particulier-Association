@@ -311,6 +311,8 @@ Français clair, chaleureux, sans jargon (explique chaque sigle la première foi
 // Parcours exact pour les demandes de formulaires : pas de génération de références.
 export async function claraDirectAnswer(question: string, emit: ToolContext['emit']): Promise<string | null> {
   const q = norm(question)
+  if (/france services|\bccas\b|guichet|mairie|pres de chez (?:moi|nous)/.test(q)) return 'Trouvez les interlocuteurs publics répertoriés près de chez vous dans [Guichets de proximité](/proximite). Indiquez seulement une commune ou un code postal.'
+  if (/echeance|date limite|calendrier|rappel|date de depot/.test(q)) return 'Je ne déduis pas de date de dépôt : vérifiez le calendrier officiel, puis enregistrez la date confirmée dans [Mes échéances](/plan-action). Vous pourrez exporter le calendrier local.'
   const wantsForm = /formulaire|cerfa|lien.*officiel|ou.*demande|ou.*deposer|ou.*telecharger/.test(q)
   const wantsPieces = /piece[s]? justificative|justificatif|liste.*piece|pieces? type|document[s]? (?:a|necessaire)|checklist/.test(q)
   if (!wantsForm && !wantsPieces) return null

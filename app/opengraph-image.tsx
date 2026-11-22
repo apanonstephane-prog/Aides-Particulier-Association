@@ -16,7 +16,7 @@ export default function OgImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #1e3a8a 0%, #1e40af 45%, #3730a3 75%, #312e81 100%)",
+          background: "linear-gradient(135deg, #3c2b4e 0%, #61436f 45%, #785b8e 75%, #4e3862 100%)",
           fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
           position: "relative",
           overflow: "hidden",

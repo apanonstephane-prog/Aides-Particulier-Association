@@ -72,77 +72,54 @@ const faqItems = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FBF7F0]">
+    <div className="min-h-screen bg-[#FBF7EF]">
       <Navbar />
 
-      {/* ─── Hero ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#0B1B3A] text-white" style={{ minHeight: '92vh' }}>
-        <div className="absolute inset-0">
-          <Image src={VISUALS.hero} alt="Une famille fait ses démarches sereinement autour de la table" fill priority sizes="100vw" className="object-cover object-right kenburns" />
+      <section className="ob-hero ob-hero--clara">
+        <Image src={VISUALS.hero} alt="Sanctuaire de pierre claire et chemin d’or vers la lumière, illustration du parcours d’accompagnement" fill priority sizes="100vw" className="ob-hero-backdrop"/>
+        <div className="ob-hero-shade"/>
+        <div className="ob-orbit" aria-hidden="true"><svg viewBox="0 0 700 700"><circle cx="350" cy="350" r="320"/><circle cx="350" cy="350" r="265"/><path d="M350 30v640M30 350h640"/></svg></div>
+        <div className="ob-hero-grid">
+          <div className="ob-hero-content">
+            <div className="ob-kicker"><span className="ob-spark"/> AIDES CONNECT · LA CONSEILLÈRE IA</div>
+            <h1>Vos droits.<br/><em>Une voie plus claire.</em></h1>
+            <p className="ob-hero-lead">Clara vous aide à repérer des pistes d’aides, trouver les formulaires officiels et avancer dans vos démarches. À votre rythme, sans jugement.</p>
+            <div className="ob-hero-actions"><Link href="/conseil?type=particulier" className="ob-button ob-button--gold">◇ Mon diagnostic gratuit</Link><Link href="/conseil?mode=live" className="ob-button ob-button--glass">✦ Discuter avec Clara</Link></div>
+            <div className="ob-hero-chips"><Link href="/conseil?type=association">Association</Link><Link href="/proximite">Un guichet près de chez moi</Link><Link href="/plan-action">Mes échéances</Link></div>
+            <div className="ob-hero-proof"><span>◇ Sans compte</span><span>◎ Diagnostic local</span><span>⚑ Sources officielles</span></div>
+          </div>
+          <div className="ob-hero-portrait"><div className="ob-frame"><Image src={VISUALS.clara} alt="Clara, la gardienne de l’accès aux droits, cadrée en pied" fill priority sizes="(max-width: 767px) 78vw, 32vw" className="ob-portrait-image"/></div><div className="ob-portrait-label"><div><span>02 / LA GARDIENNE</span><strong>CLARA.</strong></div><span className="ob-status"><i/> À L’ÉCOUTE</span></div></div>
         </div>
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(95deg, rgba(8,18,40,0.97) 0%, rgba(11,27,58,0.88) 40%, rgba(11,27,58,0.35) 72%, rgba(11,27,58,0.1) 100%)' }} />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#FBF7F0] to-transparent" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-28 md:pt-40 flex flex-col justify-center" style={{ minHeight: '92vh' }}>
-          <div className="inline-flex self-start items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[#F2B55F] mb-7 animate-fade-in">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F2B55F] animate-pulse-slow" />
-            Nouveau · Clara, conseillère IA
-          </div>
-
-          <h1 className="text-[2.6rem] sm:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight max-w-3xl animate-fade-in-up">
-            Vos droits,<br />
-            <span className="text-amber-gradient">enfin clairs.</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-white/75 max-w-xl mt-6 mb-9 leading-relaxed animate-fade-in-up delay-200">
-            Répondez à quelques questions : Clara repère les aides auxquelles vous avez probablement droit,
-            vous oriente vers les formulaires officiels et prépare votre dossier, pièce par pièce.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-2xl animate-fade-in-up delay-300">
-            <Link href="/conseil?type=particulier" className="flex-1 text-center font-bold px-6 py-4 rounded-2xl bg-[#E8962E] text-[#0B1B3A] hover:bg-[#F2B55F] transition shadow-2xl shadow-black/30">
-              Trouver mes aides →
-            </Link>
-            <Link href="/conseil?type=association" className="flex-1 text-center font-bold px-6 py-4 rounded-2xl bg-white/10 border border-white/25 backdrop-blur-md hover:bg-white/20 transition">
-              Pour une association
-            </Link>
-          </div>
-          <Link href="/conseil?demo=famille" className="self-start mt-4 text-sm font-semibold text-[#F2B55F] hover:underline animate-fade-in-up delay-400">▶ Voir Clara en action</Link>
-
-          <div className="flex flex-wrap gap-2 mt-4 animate-fade-in-up delay-400">
-            <Link href="/particuliers" className="text-sm text-white/80 px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition">Parcours particulier</Link>
-            <Link href="/associations" className="text-sm text-white/80 px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition">Parcours association</Link>
-            <Link href="/assistant" className="text-sm text-white/80 px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition">Outils dossier</Link>
-          </div>
-
-          <div className="flex flex-wrap gap-x-7 gap-y-2 mt-12 text-sm text-white/60 animate-fade-in-up delay-500">
-            {['Gratuit, sans inscription', 'Calculé sur votre appareil', 'Particuliers & associations'].map((t) => (
-              <span key={t} className="flex items-center gap-2"><span className="text-[#F2B55F]">✓</span>{t}</span>
-            ))}
-          </div>
-        </div>
+        <div className="ob-hero-foot" aria-hidden="true"><span>INDÉPENDANT · ACCESSIBLE</span><span>SCROLL ↓</span><span>OBSIDIAN EDITION · 02</span></div>
       </section>
+      <section className="ob-feature-band"><div className="ob-wrap">
+        <div className="ob-section-heading"><div><p className="ob-overline">Des outils qui passent à l’action</p><h2>Avancez, pièce par pièce.</h2></div><p>Identifiez vos pistes, trouvez un interlocuteur officiel, gardez vos échéances en main.</p></div>
+        <div className="ob-feature-grid">
+          <Link href="/proximite" className="ob-feature-card"><Image src={VISUALS.guidance} alt="Entretien chaleureux dans un espace d’accompagnement administratif" fill sizes="(max-width:768px) 100vw, 34vw"/><div><small>01 · SE FAIRE ACCOMPAGNER</small><h3>Un guichet près de chez vous</h3><p>France services, CCAS et mairies via l’annuaire officiel.</p><span>↗</span></div></Link>
+          <Link href="/plan-action" className="ob-feature-card"><Image src={VISUALS.community} alt="Des bénévoles préparent un projet associatif" fill sizes="(max-width:768px) 100vw, 34vw"/><div><small>02 · S’ORGANISER</small><h3>Calendrier de démarches</h3><p>Suivez vos échéances confirmées et exportez-les.</p><span>↗</span></div></Link>
+          <Link href="/assistant" className="ob-feature-card ob-feature-card--abstract"><div><small>03 · PRÉPARER</small><h3>Mon dossier, mes documents</h3><p>Outils administratifs locaux sur votre appareil.</p><span>↗</span></div></Link>
+        </div></div></section>
 
       {/* ─── Clara, agent ─────────────────────────────────────── */}
-      <section className="bg-[#FBF7F0] py-24">
+      <section className="bg-[#FBF7EF] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_1.1fr] gap-14 items-center">
           <div className="relative">
-            <div className="relative aspect-[4/5] max-w-lg rounded-[2rem] overflow-hidden shadow-2xl shadow-[#0B1B3A]/25">
-              <Image src={VISUALS.clara} alt="Clara, déesse protectrice, tend une lumière pour guider vers les aides" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <div className="relative aspect-[16/11] max-w-lg rounded-[2rem] overflow-hidden shadow-2xl shadow-[#30243C]/25">
+              <Image src={VISUALS.family} alt="Une famille organise ses démarches" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
             </div>
-            <div className="relative mt-4 max-w-lg bg-white rounded-2xl p-4 shadow-xl shadow-[#0B1B3A]/15 ring-1 ring-[#0B1B3A]/5">
-              <p className="text-[10px] uppercase tracking-[0.16em] font-semibold text-[#E8962E]">Exemple de pré-diagnostic</p>
-              <p className="font-bold text-[#0B1B3A]">4 droits probables</p>
+            <div className="relative mt-4 max-w-lg bg-white rounded-2xl p-4 shadow-xl shadow-[#30243C]/15 ring-1 ring-[#30243C]/5">
+              <p className="text-[10px] uppercase tracking-[0.16em] font-semibold text-[#B58A45]">Exemple de pré-diagnostic</p>
+              <p className="font-bold text-[#30243C]">3 pistes à vérifier</p>
               <div className="mt-2 space-y-1.5 text-[13px]">
                 {[['🏠', 'Aide au logement'], ['👨‍👩‍👧', 'Allocations familiales'], ['💶', "Prime d'activité"]].map(([i, n]) => (
-                  <div key={n} className="flex items-center gap-2"><span>{i}</span><span className="flex-1 text-slate-700">{n}</span><span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">probable</span></div>
+                  <div key={n} className="flex items-center gap-2"><span>{i}</span><span className="flex-1 text-slate-700">{n}</span><span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">à vérifier</span></div>
                 ))}
               </div>
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E8962E] mb-3">Conseillère · diagnostic en 1 minute</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#0B1B3A] leading-[1.05] mb-6">De « je ne sais pas à quoi j&apos;ai droit » à un dossier prêt.</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B58A45] mb-3">Conseillère · diagnostic en 1 minute</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#30243C] leading-[1.05] mb-6">De « je ne sais pas à quoi j&apos;ai droit » à un dossier prêt.</h2>
             <div className="space-y-4">
               {[
                 ['1', 'Elle écoute', 'Quelques questions courtes, uniquement celles qui changent le résultat.'],
@@ -151,15 +128,15 @@ export default function HomePage() {
                 ['4', 'Elle prépare', 'Formulaire officiel, simulateur, et liste interactive des pièces à rassembler.'],
               ].map(([n, t, d]) => (
                 <div key={n} className="flex gap-4">
-                  <span className="w-9 h-9 rounded-xl bg-[#0B1B3A] text-[#F2B55F] font-bold grid place-items-center flex-shrink-0">{n}</span>
-                  <div><p className="font-bold text-[#0B1B3A]">{t}</p><p className="text-slate-600 text-[15px] leading-relaxed">{d}</p></div>
+                  <span className="w-9 h-9 rounded-xl bg-[#30243C] text-[#D9B778] font-bold grid place-items-center flex-shrink-0">{n}</span>
+                  <div><p className="font-bold text-[#30243C]">{t}</p><p className="text-slate-600 text-[15px] leading-relaxed">{d}</p></div>
                 </div>
               ))}
             </div>
-            <Link href="/conseil?type=particulier" className="inline-flex items-center gap-2 mt-9 px-7 py-4 rounded-2xl bg-[#0B1B3A] text-white font-bold hover:bg-[#1F3B73] transition shadow-xl shadow-[#0B1B3A]/20">
-              Faire mon diagnostic <span className="text-[#F2B55F]">→</span>
+            <Link href="/conseil?type=particulier" className="inline-flex items-center gap-2 mt-9 px-7 py-4 rounded-2xl bg-[#30243C] text-white font-bold hover:bg-[#61436F] transition shadow-xl shadow-[#30243C]/20">
+              Faire mon diagnostic <span className="text-[#D9B778]">→</span>
             </Link>
-            <Link href="/conseil?mode=live" className="inline-flex items-center gap-2 mt-3 ml-0 sm:ml-4 px-5 py-3 rounded-2xl border border-[#0B1B3A]/20 text-[#0B1B3A] font-semibold hover:bg-white">Discuter gratuitement avec Clara →</Link>
+            <Link href="/conseil?mode=live" className="inline-flex items-center gap-2 mt-3 ml-0 sm:ml-4 px-5 py-3 rounded-2xl border border-[#30243C]/20 text-[#30243C] font-semibold hover:bg-white">Discuter gratuitement avec Clara →</Link>
           </div>
         </div>
       </section>
@@ -167,7 +144,7 @@ export default function HomePage() {
       {/* ─── Pour qui ─────────────────────────────────────────── */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1B3A] max-w-2xl mb-10">Une porte d&apos;entrée pour chaque situation.</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#30243C] max-w-2xl mb-10">Une porte d&apos;entrée pour chaque situation.</h2>
           <div className="grid md:grid-cols-3 gap-5">
             {[
               { img: VISUALS.etudiant, t: 'Étudiants & jeunes actifs', d: 'Bourse, logement, prime d’activité, santé.', id: 'etudiant' },
@@ -176,11 +153,11 @@ export default function HomePage() {
             ].map((c) => (
               <Link key={c.t} href={`/conseil?profil=${c.id}`} className="group relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-[3/4]">
                 <Image src={c.img} alt={c.t} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3A] via-[#0B1B3A]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#30243C] via-[#30243C]/30 to-transparent" />
                 <div className="absolute bottom-0 p-6 text-white">
                   <p className="text-xl font-bold">{c.t}</p>
                   <p className="text-white/75 text-sm mt-1">{c.d}</p>
-                  <p className="text-[#F2B55F] text-sm font-semibold mt-3 group-hover:translate-x-1 transition">Voir un exemple de diagnostic →</p>
+                  <p className="text-[#D9B778] text-sm font-semibold mt-3 group-hover:translate-x-1 transition">Voir un exemple de diagnostic →</p>
                 </div>
               </Link>
             ))}
@@ -203,7 +180,7 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {valueCards.map((card, i) => (
               <div key={i} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 card-hover">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                <div className="w-11 h-11 rounded-xl bg-[#f1ebf5] text-[#61436f] flex items-center justify-center mb-4">
                   {card.icon}
                 </div>
                 <h3 className="font-semibold text-slate-800 mb-2 text-sm leading-snug">{card.title}</h3>
@@ -232,7 +209,7 @@ export default function HomePage() {
                 step: "1",
                 title: "Choisissez votre profil",
                 desc: "Particulier ou association : le parcours s'adapte à votre situation.",
-                color: "bg-blue-600",
+                color: "bg-[#61436f]",
               },
               {
                 step: "2",
@@ -264,7 +241,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-14 items-start">
             <div className="lg:w-1/2">
-              <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Particuliers</span>
+              <span className="text-[#61436f] font-semibold text-xs uppercase tracking-widest">Particuliers</span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">
                 Des aides selon votre situation
               </h2>
@@ -287,7 +264,7 @@ export default function HomePage() {
                   <Link
                     key={i}
                     href={item.href}
-                    className="flex items-center gap-2 p-3 rounded-xl border border-slate-100 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-all text-sm font-medium text-slate-700 hover:text-blue-700"
+                    className="flex items-center gap-2 p-3 rounded-xl border border-slate-100 bg-slate-50 hover:bg-[#f1ebf5] hover:border-[#d8c9e0] transition-all text-sm font-medium text-slate-700 hover:text-blue-700"
                   >
                     <svg className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
@@ -305,7 +282,7 @@ export default function HomePage() {
 
               <Link
                 href="/particuliers"
-                className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg text-sm"
+                className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#61436f] text-white font-semibold rounded-xl hover:bg-[#3f2d4d] transition-colors shadow-md hover:shadow-lg text-sm"
               >
                 Explorer toutes les situations
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -319,7 +296,7 @@ export default function HomePage() {
                 <h3 className="font-semibold text-slate-700 text-sm mb-5 uppercase tracking-wider">Exemples d&apos;aides répertoriées</h3>
                 <div className="space-y-3">
                   {[
-                    { name: "Aide Personnalisée au Logement (APL)", org: "CAF / MSA", cat: "Logement", color: "bg-blue-50 text-blue-700" },
+                    { name: "Aide Personnalisée au Logement (APL)", org: "CAF / MSA", cat: "Logement", color: "bg-[#f1ebf5] text-blue-700" },
                     { name: "Prime d'activité", org: "CAF", cat: "Emploi", color: "bg-green-50 text-green-700" },
                     { name: "Revenu de Solidarité Active (RSA)", org: "CAF / Département", cat: "Social", color: "bg-purple-50 text-purple-700" },
                     { name: "Allocation Adulte Handicapé (AAH)", org: "CAF / MDPH", cat: "Handicap", color: "bg-pink-50 text-pink-700" },
@@ -461,7 +438,7 @@ export default function HomePage() {
               </div>
 
               {/* Disclaimer assistant */}
-              <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl text-xs text-blue-800 leading-relaxed mb-6">
+              <div className="p-4 bg-[#f1ebf5] border border-blue-100 rounded-xl text-xs text-blue-800 leading-relaxed mb-6">
                 Aides Connect ne transmet pas vos demandes aux administrations. Il vous aide à
                 préparer vos démarches avant envoi auprès des services compétents.
               </div>
@@ -559,7 +536,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <Link href="/contact" className="text-sm text-blue-600 hover:underline font-medium">
+            <Link href="/contact" className="text-sm text-[#61436f] hover:underline font-medium">
               Vous avez une autre question ? Contactez-nous →
             </Link>
           </div>

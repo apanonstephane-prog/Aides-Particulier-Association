@@ -96,12 +96,12 @@ export default function DocumentScanner() {
         <div className="grid sm:grid-cols-2 gap-4">
           <button
             onClick={openCamera}
-            className="flex flex-col items-center gap-3 p-6 rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50 hover:border-blue-400 hover:bg-blue-100 transition-all text-center"
+            className="flex flex-col items-center gap-3 p-6 rounded-2xl border-2 border-dashed border-[#d8c9e0] bg-[#f1ebf5] hover:border-blue-400 hover:bg-blue-100 transition-all text-center"
           >
             <span className="text-4xl">📷</span>
             <div>
               <p className="font-semibold text-blue-800 text-sm">Prendre une photo</p>
-              <p className="text-xs text-blue-600 mt-0.5">Utiliser la caméra de votre appareil</p>
+              <p className="text-xs text-[#61436f] mt-0.5">Utiliser la caméra de votre appareil</p>
             </div>
           </button>
 
@@ -176,7 +176,7 @@ export default function DocumentScanner() {
           <div className="flex gap-3">
             <button
               onClick={capture}
-              className="flex-1 flex items-center justify-center gap-2 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-md"
+              className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#61436f] text-white font-bold rounded-xl hover:bg-[#3f2d4d] transition-colors shadow-md"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />

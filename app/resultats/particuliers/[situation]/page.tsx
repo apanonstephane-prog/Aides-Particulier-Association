@@ -755,7 +755,7 @@ export default async function ResultatsParticuliersPage({ params }: PageProps) {
         <Navbar />
         <div className="pt-32 pb-20 text-center">
           <h1 className="text-2xl font-bold text-slate-800 mb-4">Situation non trouvée</h1>
-          <Link href="/particuliers" className="text-blue-600 hover:underline">← Retour aux situations</Link>
+          <Link href="/particuliers" className="text-[#61436f] hover:underline">← Retour aux situations</Link>
         </div>
         <Footer />
       </div>
@@ -850,7 +850,7 @@ export default async function ResultatsParticuliersPage({ params }: PageProps) {
                   <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
                     {aide.lienFormulaire && (
                       <a href={aide.lienFormulaire} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#61436f] text-white text-xs font-semibold rounded-lg hover:bg-[#3f2d4d] transition-colors">
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         </svg>
@@ -909,7 +909,7 @@ export default async function ResultatsParticuliersPage({ params }: PageProps) {
                 <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
                   {aide.lienFormulaire && (
                     <a href={aide.lienFormulaire} target="_blank" rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#61436f] text-white text-xs font-semibold rounded-lg hover:bg-[#3f2d4d] transition-colors">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                       </svg>

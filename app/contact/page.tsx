@@ -37,7 +37,7 @@ export default function ContactPage() {
 
             {/* Email principal */}
             <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-[#f1ebf5] text-[#61436f] flex items-center justify-center mb-4">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -48,7 +48,7 @@ export default function ContactPage() {
               </p>
               <a
                 href="mailto:contact@aides-connect.fr"
-                className="text-blue-600 hover:underline text-sm font-medium"
+                className="text-[#61436f] hover:underline text-sm font-medium"
               >
                 contact@aides-connect.fr
               </a>

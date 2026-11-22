@@ -61,6 +61,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <footer className="ob-signature" aria-label="Signature du studio"><a href="https://obsidian-arts-films-studio.fr/" target="_blank" rel="noreferrer noopener"><span className="ob-signature-mark" aria-hidden="true">◇</span><span>Une création <strong>OBSIDIAN ARTS FILMS STUDIO</strong></span><span className="ob-signature-arrow" aria-hidden="true">↗</span></a></footer>
       </body>
     </html>
   );
